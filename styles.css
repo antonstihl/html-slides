@@ -1,0 +1,165 @@
+:root {
+  font-family: "Nordnet Sans Mono",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  font-size: 32px;
+  cursor: default;
+  --transitionDuration: 500ms;
+  --bgColour: black;
+  --textColour: rgb(220, 220, 220);
+  --secondaryTextColour: rgb(122, 122, 122);
+}
+
+html,
+body {
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--bgColour);
+  color: var(--textColour);
+}
+
+.light-mode {
+  --bgColour: white;
+  --textColour: black;
+}
+
+.slide-deck {
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+section {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding-top: 4rem;
+  padding-left: 3rem;
+  scroll-snap-align: start;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+  color: var(--secondaryTextColour);
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin: 0.5em -1rem;
+  font-weight: bold;
+  color: var(--secondaryTextColour);
+}
+
+h3 {
+  font-size: 1.1rem;
+  margin: 1em -1rem;
+  font-style: italic;
+  color: var(--secondaryTextColour);
+}
+
+p {
+  font-size: 1rem;
+  margin: 1em 0;
+}
+
+ul,
+ol {
+  margin-left: 1rem;
+  list-style-position: outside;
+
+  li {
+    margin: 0.5em 1em;
+    width: max-content;
+  }
+}
+
+ul li {
+  list-style-type: disc;
+}
+
+ol li {
+  list-style-type: decimal;
+}
+
+.animate-in {
+  opacity: 0;
+  transition-property: all;
+  transition-duration: var(--transitionDuration);
+}
+
+.animated-in {
+  opacity: 1;
+}
+
+.animated-in:not(.focus) {
+  color: var(--secondaryTextColour);
+}
+
+.focus {
+  color: var(--textColour);
+  transform: translateX(0.5rem);
+}
+
+.cpad {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+}
+
+.yellow-btn {
+  fill: rgb(250, 189, 29);
+  /* stroke: rgb(220, 220, 220); */
+  stroke-width: 1;
+  transition-property: all;
+  transition-duration: var(--transitionDuration);
+}
+
+.clean-btn {
+  fill: var(--textColour);
+  transition-property: all;
+  transition-duration: var(--transitionDuration);
+}
+
+.yellow-btn-depression {
+  fill: rgb(209, 156, 24);
+  opacity: 1;
+  transition-property: all;
+  transition-duration: var(--transitionDuration);
+}
+
+.yellow-btn-depression.arrow-up {
+  transform: translateY(-36px);
+}
+
+.yellow-btn-depression.arrow-down {
+  transform: translateY(36px) rotate(180deg);
+  transform-origin: 50% 50%;
+}
+
+.yellow-btn-depression.arrow-right {
+  transform: translateX(36px) rotate(90deg);
+  transform-origin: 50% 50%;
+}
+
+.yellow-btn-depression.arrow-left {
+  transform: translateX(-36px) rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+.cpad-ring {
+  stroke-width: 1;
+  stroke: #ffffff;
+  fill: rgb(107, 107, 107);
+  opacity: 0.7;
+}
+
+.hide {
+  opacity: 0;
+}
