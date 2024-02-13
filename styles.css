@@ -41,6 +41,7 @@ section {
   padding-top: 4rem;
   padding-left: 3rem;
   scroll-snap-align: start;
+  border-bottom: 1px solid var(--secondaryTextColour);
 }
 
 h1 {
