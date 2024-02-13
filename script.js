@@ -43,7 +43,7 @@ addEventListener("keydown", (e) => {
     } else if (currentSection.previous) {
       goToPreviousSection();
     }
-  } else if ((e.key = "r")) {
+  } else if (e.key === "r") {
     currentSection.scrollIntoView();
   }
 });
@@ -116,8 +116,7 @@ function animateBack() {
       previouslyAnimatedArray[previouslyAnimatedArray.length - 1];
     mostRecentlyAnimated.classList.remove("animated-in");
     clearSectionFocus();
-    const animatedInElements =
-      currentSection.querySelectorAll(".animated-in");
+    const animatedInElements = currentSection.querySelectorAll(".animated-in");
     if (animatedInElements.length > 0) {
       animatedInElements[animatedInElements.length - 1].classList.add("focus");
     }
