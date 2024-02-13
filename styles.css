@@ -163,3 +163,12 @@ ol li {
 .hide {
   opacity: 0;
 }
+
+.branding {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  .logo {
+    fill: var(--secondaryTextColour);
+  }
+}
