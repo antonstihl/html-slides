@@ -100,6 +100,7 @@ function hasPreviousAnimation() {
 }
 
 function animateNext() {
+  currentSection.scrollIntoView();
   const nextAnimatable = getNextAnimatable();
   if (nextAnimatable) {
     nextAnimatable?.classList.add("animated-in");
@@ -110,6 +111,7 @@ function animateNext() {
 }
 
 function animateBack() {
+  currentSection.scrollIntoView();
   const previouslyAnimatedArray = getPreviouslyAnimatedArray();
   if (previouslyAnimatedArray.length > 0) {
     const mostRecentlyAnimated =

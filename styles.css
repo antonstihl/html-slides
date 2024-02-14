@@ -13,6 +13,11 @@
   --secondaryTextColour: rgb(122, 122, 122);
 }
 
+.light-mode {
+  --bgColour: white;
+  --textColour: black;
+}
+
 html,
 body {
   overflow: hidden;
@@ -20,12 +25,7 @@ body {
 
 body {
   background-color: var(--bgColour);
-  color: var(--textColour);
-}
-
-.light-mode {
-  --bgColour: white;
-  --textColour: black;
+  color: var(--secondaryTextColour);
 }
 
 .slide-deck {
@@ -38,8 +38,8 @@ body {
 section {
   box-sizing: border-box;
   min-height: 100vh;
-  padding-top: 4rem;
-  padding-left: 3rem;
+  padding-top: 3rem;
+  padding-left: 2rem;
   scroll-snap-align: start;
   border-bottom: 1px solid var(--secondaryTextColour);
 }
@@ -99,77 +99,11 @@ ol li {
   opacity: 1;
 }
 
-.animated-in:not(.focus) {
-  color: var(--secondaryTextColour);
-}
-
 .focus {
   color: var(--textColour);
   transform: translateX(0.5rem);
 }
 
-.cpad {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-}
-
-.yellow-btn {
-  fill: rgb(250, 189, 29);
-  /* stroke: rgb(220, 220, 220); */
-  stroke-width: 1;
-  transition-property: all;
-  transition-duration: var(--transitionDuration);
-}
-
-.clean-btn {
-  fill: var(--textColour);
-  transition-property: all;
-  transition-duration: var(--transitionDuration);
-}
-
-.yellow-btn-depression {
-  fill: rgb(209, 156, 24);
-  opacity: 1;
-  transition-property: all;
-  transition-duration: var(--transitionDuration);
-}
-
-.yellow-btn-depression.arrow-up {
-  transform: translateY(-36px);
-}
-
-.yellow-btn-depression.arrow-down {
-  transform: translateY(36px) rotate(180deg);
-  transform-origin: 50% 50%;
-}
-
-.yellow-btn-depression.arrow-right {
-  transform: translateX(36px) rotate(90deg);
-  transform-origin: 50% 50%;
-}
-
-.yellow-btn-depression.arrow-left {
-  transform: translateX(-36px) rotate(-90deg);
-  transform-origin: 50% 50%;
-}
-
-.cpad-ring {
-  stroke-width: 1;
-  stroke: #ffffff;
-  fill: rgb(107, 107, 107);
-  opacity: 0.7;
-}
-
-.hide {
-  opacity: 0;
-}
-
-.branding {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  .logo {
-    fill: var(--secondaryTextColour);
-  }
+.focus-always {
+  color: var(--textColour);
 }
