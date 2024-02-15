@@ -137,7 +137,7 @@ function clearSectionFocus() {
 
 function getFocusableChildren(p) {
   return Array.from(p.children).flatMap((e) => {
-    if (["DIV", "UL", "OL"].includes(e.tagName)) {
+    if (["DIV", "UL", "OL", "SPAN"].includes(e.tagName)) {
       if (e.classList.contains("focusable")) {
         return [e];
       } else {
