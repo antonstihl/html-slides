@@ -51,21 +51,27 @@ addEventListener("keydown", (e) => {
 });
 
 function goToNextSection() {
-  if (currentSection.next) {
-    currentSection.next.scrollIntoView();
-    currentSection = currentSection.next;
-    focusNext();
-    refreshControls();
+  if (!currentSection.next) {
+    return;
   }
+  currentSection.next.scrollIntoView();
+  currentSection = currentSection.next;
+  if (currentSection.querySelectorAll(".focus").length === 0) {
+    getNextFocusable()?.classList.add("focus");
+  }
+  refreshControls();
 }
 
 function goToPreviousSection() {
-  if (currentSection.previous) {
-    currentSection.previous.scrollIntoView();
-    currentSection = currentSection.previous;
-    focusPrevious();
-    refreshControls();
+  if (!currentSection.previous) {
+    return;
   }
+  currentSection.previous.scrollIntoView();
+  currentSection = currentSection.previous;
+  if (currentSection.querySelectorAll(".focus").length === 0) {
+    getNextFocusable()?.classList.add("focus");
+  }
+  refreshControls();
 }
 
 function refreshControls() {
@@ -92,7 +98,7 @@ function refreshControls() {
 }
 
 function focusNext() {
-  currentSection.scrollIntoView();
+  currentSection.scrollIntoView({ behavior: "instant" });
   const nextFocusableElement = getNextFocusable();
   if (!!nextFocusableElement) {
     clearSectionFocus();
@@ -105,7 +111,7 @@ function focusNext() {
 }
 
 function focusPrevious() {
-  currentSection.scrollIntoView();
+  currentSection.scrollIntoView({ behavior: "instant" });
   const previousFocusableElement = getPreviousFocusable();
   if (!!previousFocusableElement) {
     const focusedElement = currentSection.querySelector(".focus");
