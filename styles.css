@@ -13,6 +13,11 @@
   --secondaryTextColour: rgb(122, 122, 122);
 }
 
+* {
+  transition-property: all;
+  transition-duration: var(--transitionDuration);
+}
+
 .light-mode {
   --bgColour: white;
   --textColour: black;
@@ -91,19 +96,17 @@ ol li {
 
 .animate-in {
   opacity: 0;
-  transition-property: all;
-  transition-duration: var(--transitionDuration);
 }
 
 .animated-in {
   opacity: 1;
 }
 
-.focus {
-  color: var(--textColour);
-  transform: translateX(0.5rem);
-}
-
+.focus,
 .focus-always {
   color: var(--textColour);
+}
+
+.focus {
+  transform: translateX(0.5rem);
 }
