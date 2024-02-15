@@ -102,8 +102,7 @@ ol li {
   opacity: 1;
 }
 
-.focus,
-.focus-always {
+.focus, .focus-always {
   color: var(--textColour);
 }
 

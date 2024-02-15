@@ -102,12 +102,17 @@ function focusNext() {
   const nextFocusableElement = getNextFocusable();
   if (!!nextFocusableElement) {
     clearSectionFocus();
-    nextFocusableElement.classList.add("focus");
-    if (nextFocusableElement.classList.contains("animate-in")) {
-      nextFocusableElement.classList.add("animated-in");
-    }
+    focus(nextFocusableElement);
     refreshControls();
   }
+}
+
+function focus(e) {
+  e.classList.add("focus");
+  if (e.classList.contains("animate-in")) {
+    e.classList.add("animated-in");
+  }
+  Array.from(e.children).forEach(focus);
 }
 
 function focusPrevious() {
@@ -133,7 +138,11 @@ function clearSectionFocus() {
 function getFocusableChildren(p) {
   return Array.from(p.children).flatMap((e) => {
     if (["DIV", "UL", "OL"].includes(e.tagName)) {
-      return [...getFocusableChildren(e)];
+      if (e.classList.contains("focusable")) {
+        return [e];
+      } else {
+        return [...getFocusableChildren(e)];
+      }
     } else {
       return [e];
     }
