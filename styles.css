@@ -47,6 +47,7 @@ section {
   padding-left: 2rem;
   scroll-snap-align: start;
   border-bottom: 1px solid var(--secondaryTextColour);
+  overflow: scroll;
 }
 
 h1 {
@@ -102,10 +103,16 @@ ol li {
   opacity: 1;
 }
 
-.focus, .focus-always {
+.focus, .focus-sticky {
   color: var(--textColour);
 }
 
-.focus {
-  transform: translateX(0.5rem);
+ .focus::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 1em;
+  display: flex;
+  width: 0px;
+  border: 1px solid white;
 }

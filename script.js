@@ -120,11 +120,9 @@ function focusPrevious() {
   const previousFocusableElement = getPreviousFocusable();
   if (!!previousFocusableElement) {
     const focusedElement = currentSection.querySelector(".focus");
-    if (previousFocusableElement !== focusedElement) {
-      focusedElement.classList.remove("animated-in");
-    }
+    focusedElement.classList.remove("animated-in");
     clearSectionFocus();
-    previousFocusableElement.classList.add("focus");
+    focus(previousFocusableElement);
     refreshControls();
   }
 }
@@ -137,7 +135,7 @@ function clearSectionFocus() {
 
 function getFocusableChildren(p) {
   return Array.from(p.children).flatMap((e) => {
-    if (["DIV", "UL", "OL", "SPAN"].includes(e.tagName)) {
+    if (e.children.length > 0) {
       if (e.classList.contains("focusable")) {
         return [e];
       } else {
