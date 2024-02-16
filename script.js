@@ -1,6 +1,4 @@
 const sections = document.querySelectorAll("section");
-const iterableSections = getLinkedArray(sections);
-
 const leftArrow = document.querySelectorAll(".arrow-left");
 const rightArrow = document.querySelectorAll(".arrow-right");
 const downArrow = document.querySelectorAll(".arrow-down");
@@ -14,7 +12,7 @@ addEventListener("click", () => {
   }
 });
 
-let currentSection = iterableSections[0];
+document.querySelector("section").classList.add("current");
 focusNext();
 refreshControls();
 
@@ -35,52 +33,76 @@ addEventListener("keydown", (e) => {
     e.preventDefault();
     if (getNextFocusable()) {
       focusNext();
-    } else if (currentSection.next) {
+    } else {
       goToNextSection();
     }
   } else if (e.key === "b") {
     e.preventDefault();
     if (getPreviousFocusable()) {
       focusPrevious();
-    } else if (currentSection.previous) {
+    } else {
       goToPreviousSection();
     }
   } else if (e.key === "r") {
-    currentSection.scrollIntoView();
+    currentSection().scrollIntoView();
   }
 });
 
+function currentSection() {
+  return document.querySelector(".current");
+}
+
+function nextSection() {
+  return document.querySelector(".current+section");
+}
+
+function previousSection() {
+  return document.querySelector("section:has(+ .current)");
+}
+
 function goToNextSection() {
-  if (!currentSection.next) {
+  const next = nextSection();
+  if (!next) {
     return;
   }
-  currentSection.next.scrollIntoView();
-  currentSection = currentSection.next;
-  if (currentSection.querySelectorAll(".focus").length === 0) {
-    getNextFocusable()?.classList.add("focus");
+  currentSection().classList.remove("current");
+  next.scrollIntoView();
+  next.classList.add("current");
+  if (!getFocusedElement()) {
+    initializeFocus();
   }
   refreshControls();
 }
 
 function goToPreviousSection() {
-  if (!currentSection.previous) {
+  const previous = previousSection();
+  if (!previous) {
     return;
   }
-  currentSection.previous.scrollIntoView();
-  currentSection = currentSection.previous;
-  if (currentSection.querySelectorAll(".focus").length === 0) {
-    getNextFocusable()?.classList.add("focus");
+  currentSection().classList.remove("current");
+  previous.scrollIntoView();
+  previous.classList.add("current");
+  if (!getFocusedElement()) {
+    initializeFocus();
   }
   refreshControls();
 }
 
+function getFocusedElement() {
+  return currentSection().querySelector(".focus");
+}
+
+function initializeFocus() {
+  getNextFocusable()?.classList.add("focus");
+}
+
 function refreshControls() {
-  if (!currentSection.previous) {
+  if (!previousSection()) {
     upArrow.forEach((e) => e.classList.add("hide"));
   } else {
     upArrow.forEach((e) => e.classList.remove("hide"));
   }
-  if (!currentSection.next) {
+  if (!nextSection()) {
     downArrow.forEach((e) => e.classList.add("hide"));
   } else {
     downArrow.forEach((e) => e.classList.remove("hide"));
@@ -98,7 +120,7 @@ function refreshControls() {
 }
 
 function focusNext() {
-  currentSection.scrollIntoView({ behavior: "instant" });
+  currentSection().scrollIntoView({ behavior: "instant" });
   const nextFocusableElement = getNextFocusable();
   if (!!nextFocusableElement) {
     clearSectionFocus();
@@ -116,10 +138,10 @@ function focus(e) {
 }
 
 function focusPrevious() {
-  currentSection.scrollIntoView({ behavior: "instant" });
+  currentSection().scrollIntoView({ behavior: "instant" });
   const previousFocusableElement = getPreviousFocusable();
   if (!!previousFocusableElement) {
-    const focusedElement = currentSection.querySelector(".focus");
+    const focusedElement = getFocusedElement();
     focusedElement.classList.remove("animated-in");
     clearSectionFocus();
     focus(previousFocusableElement);
@@ -128,9 +150,33 @@ function focusPrevious() {
 }
 
 function clearSectionFocus() {
-  currentSection
+  currentSection()
     .querySelectorAll(".focus")
     .forEach((e) => e.classList.remove("focus"));
+}
+
+function getNextFocusable() {
+  const focusableElements = getFocusableChildren(currentSection());
+  const focusedElementIndex = focusableElements.findIndex((e) =>
+    e.classList.contains("focus")
+  );
+  if (focusedElementIndex === focusableElements.length - 1) {
+    return undefined;
+  } else {
+    return focusableElements[focusedElementIndex + 1];
+  }
+}
+
+function getPreviousFocusable() {
+  const focusableElements = getFocusableChildren(currentSection());
+  const focusedElementIndex = focusableElements.findIndex((e) =>
+    e.classList.contains("focus")
+  );
+  if (focusedElementIndex === 0) {
+    return undefined;
+  } else {
+    return focusableElements[focusedElementIndex - 1];
+  }
 }
 
 function getFocusableChildren(p) {
@@ -145,43 +191,4 @@ function getFocusableChildren(p) {
       return [e];
     }
   });
-}
-
-function getNextFocusable() {
-  const focusableElements = getFocusableChildren(currentSection);
-  const focusedElementIndex = focusableElements.findIndex((e) =>
-    e.classList.contains("focus")
-  );
-  if (focusedElementIndex === focusableElements.length - 1) {
-    return undefined;
-  } else {
-    return focusableElements[focusedElementIndex + 1];
-  }
-}
-
-function getPreviousFocusable() {
-  const focusableElements = getFocusableChildren(currentSection);
-  const focusedElementIndex = focusableElements.findIndex((e) =>
-    e.classList.contains("focus")
-  );
-  if (focusedElementIndex === 0) {
-    return undefined;
-  } else {
-    return focusableElements[focusedElementIndex - 1];
-  }
-}
-
-function getLinkedArray(inputArray) {
-  const linkedOutputArray = [];
-  for (let i = 0; i < inputArray.length; i++) {
-    linkedOutputArray[i] = inputArray[i];
-  }
-
-  for (let i = 0; i < linkedOutputArray.length; i++) {
-    linkedOutputArray[i].previous =
-      i > 0 ? linkedOutputArray[i - 1] : undefined;
-    linkedOutputArray[i].next =
-      i < linkedOutputArray.length - 1 ? linkedOutputArray[i + 1] : undefined;
-  }
-  return linkedOutputArray;
 }

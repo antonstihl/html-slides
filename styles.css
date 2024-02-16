@@ -103,16 +103,39 @@ ol li {
   opacity: 1;
 }
 
-.focus, .focus-sticky {
+.focus,
+.focus-sticky {
   color: var(--textColour);
 }
 
- .focus::before {
+.focus::after:not(ol):not(ul) {
   content: "";
-  position: absolute;
-  left: 0;
+  position: relative;
+  right: 0;
   height: 1em;
-  display: flex;
   width: 0px;
   border: 1px solid white;
+  animation-name: blink;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-fill-mode: both;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  51% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
