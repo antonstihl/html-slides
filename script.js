@@ -137,12 +137,20 @@ function focus(e) {
   Array.from(e.children).forEach(focus);
 }
 
+function unfocus(e) {
+  e.classList.remove("focus");
+  if (e.classList.contains("animated-in")) {
+    e.classList.remove("animated-in");
+  }
+  Array.from(e.children).forEach(unfocus);
+}
+
 function focusPrevious() {
   currentSection().scrollIntoView({ behavior: "instant" });
   const previousFocusableElement = getPreviousFocusable();
   if (!!previousFocusableElement) {
     const focusedElement = getFocusedElement();
-    focusedElement.classList.remove("animated-in");
+    unfocus(focusedElement);
     clearSectionFocus();
     focus(previousFocusableElement);
     refreshControls();
