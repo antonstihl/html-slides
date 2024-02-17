@@ -48,6 +48,7 @@ section {
   scroll-snap-align: start;
   border-bottom: 1px solid var(--secondaryTextColour);
   overflow: scroll;
+  position: relative;
 }
 
 h1 {
@@ -108,34 +109,12 @@ ol li {
   color: var(--textColour);
 }
 
-.focus::after:not(ol):not(ul) {
+.focus::before:not(ol):not(ul) {
   content: "";
-  position: relative;
-  right: 0;
+  position: absolute;
+  left: 0;
   height: 1em;
-  width: 0px;
-  border: 1px solid white;
-  animation-name: blink;
-  animation-duration: 1.5s;
-  animation-iteration-count: infinite;
-  animation-direction: normal;
-  animation-fill-mode: both;
-}
-
-@keyframes blink {
-  0% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  51% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 0;
-  }
+  width: 2px;
+  background-color: var(--textColour);
+  filter: blur(3px);
 }
