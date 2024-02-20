@@ -7,7 +7,6 @@
     sans-serif;
   font-size: 32px;
   cursor: default;
-  --transitionDuration: 500ms;
   --bgColour: black;
   --textColour: rgb(220, 220, 220);
   --secondaryTextColour: rgb(122, 122, 122);
@@ -15,7 +14,7 @@
 
 * {
   transition-property: all;
-  transition-duration: var(--transitionDuration);
+  transition-duration: 500ms;
 }
 
 .light-mode {
@@ -49,7 +48,7 @@ section {
   border-bottom: 1px solid var(--secondaryTextColour);
   overflow: scroll;
   position: relative;
-  font-size: 0.5rem;
+  font-size: 1rem;
 }
 
 h1 {
@@ -101,10 +100,10 @@ ol li {
   color: var(--textColour);
 }
 
-.apple {
+.reveal {
   opacity: 0;
 }
 
-.appled {
+.revealed {
   opacity: 1;
 }

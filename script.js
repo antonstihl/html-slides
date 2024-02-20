@@ -31,14 +31,14 @@ addEventListener("keydown", (e) => {
     focusPrevious();
   } else if (e.key === "n") {
     e.preventDefault();
-    if (getNextApple()) {
+    if (getNextReveal()) {
       focusNext();
     } else {
       goToNextSection();
     }
   } else if (e.key === "b") {
     e.preventDefault();
-    if (getPreviousApple()) {
+    if (getPreviousReveal()) {
       focusPrevious();
     } else {
       goToPreviousSection();
@@ -97,12 +97,12 @@ function refreshControls() {
   } else {
     downArrow.forEach((e) => e.classList.remove("hide"));
   }
-  if (!getNextApple()) {
+  if (!getNextReveal()) {
     rightArrow.forEach((e) => e.classList.add("hide"));
   } else {
     rightArrow.forEach((e) => e.classList.remove("hide"));
   }
-  if (!getPreviousApple()) {
+  if (!getPreviousReveal()) {
     leftArrow.forEach((e) => e.classList.add("hide"));
   } else {
     leftArrow.forEach((e) => e.classList.remove("hide"));
@@ -111,70 +111,70 @@ function refreshControls() {
 
 function focusNext() {
   currentSection().scrollIntoView({ behavior: "instant" });
-  const nextApple = getNextApple();
-  if (!!nextApple) {
+  const nextReveal = getNextReveal();
+  if (!!nextReveal) {
     clearSectionFocus();
-    focus(nextApple);
+    focus(nextReveal);
     refreshControls();
   }
 }
 
 function focusPrevious() {
   currentSection().scrollIntoView({ behavior: "instant" });
-  const previousApple = getPreviousApple();
-  if (!!previousApple) {
-    const focusedApple = getFocusedElement();
-    unfocus(focusedApple);
+  const previousReveal = getPreviousReveal();
+  if (!!previousReveal) {
+    const focusedReveal = getFocusedElement();
+    unfocus(focusedReveal);
     clearSectionFocus();
-    focus(previousApple);
+    focus(previousReveal);
     refreshControls();
   }
 }
 
-function getNextApple() {
-  const apples = getApples(currentSection());
-  const currentAppleIndex = apples.findIndex((e) =>
+function getNextReveal() {
+  const reveals = getReveals(currentSection());
+  const currentRevealIndex = reveals.findIndex((e) =>
     e.classList.contains("focus")
   );
-  if (currentAppleIndex === apples.length - 1) {
+  if (currentRevealIndex === reveals.length - 1) {
     return undefined;
   } else {
-    return apples[currentAppleIndex + 1];
+    return reveals[currentRevealIndex + 1];
   }
 }
 
-function getPreviousApple() {
-  const apples = getApples(currentSection());
-  const currentAppleIndex = apples.findIndex((e) =>
+function getPreviousReveal() {
+  const reveals = getReveals(currentSection());
+  const currentRevealIndex = reveals.findIndex((e) =>
     e.classList.contains("focus")
   );
-  if (currentAppleIndex === 0) {
+  if (currentRevealIndex === 0) {
     return undefined;
   } else {
-    return apples[currentAppleIndex - 1];
+    return reveals[currentRevealIndex - 1];
   }
 }
 
-function getApples(e) {
-  let apples = [];
-  if (isApple(e)) apples.push(e);
+function getReveals(e) {
+  let reveals = [];
+  if (isReveal(e)) reveals.push(e);
   if (e.children.length > 0)
-    apples.push(...Array.from(e.children).flatMap(getApples));
-  return apples;
+    reveals.push(...Array.from(e.children).flatMap(getReveals));
+  return reveals;
 }
 
-function isApple(e) {
-  return e.classList.contains("apple");
+function isReveal(e) {
+  return e.classList.contains("reveal");
 }
 
 function focus(e) {
   e.classList.add("focus");
-  e.classList.add("appled");
+  e.classList.add("revealed");
 }
 
 function unfocus(e) {
   e.classList.remove("focus");
-  e.classList.remove("appled");
+  e.classList.remove("revealed");
   Array.from(e.children).forEach(unfocus);
 }
 
