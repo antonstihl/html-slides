@@ -13,7 +13,6 @@ addEventListener("click", () => {
 });
 
 document.querySelector("section").classList.add("current");
-focusNext();
 refreshControls();
 
 addEventListener("keydown", (e) => {
@@ -31,14 +30,14 @@ addEventListener("keydown", (e) => {
     focusPrevious();
   } else if (e.key === "n") {
     e.preventDefault();
-    if (getNextReveal()) {
+    if (getNextFocusable()) {
       focusNext();
     } else {
       goToNextSection();
     }
   } else if (e.key === "b") {
     e.preventDefault();
-    if (getPreviousReveal()) {
+    if (getPreviousFocusable()) {
       focusPrevious();
     } else {
       goToPreviousSection();
@@ -97,12 +96,12 @@ function refreshControls() {
   } else {
     downArrow.forEach((e) => e.classList.remove("hide"));
   }
-  if (!getNextReveal()) {
+  if (!getNextFocusable()) {
     rightArrow.forEach((e) => e.classList.add("hide"));
   } else {
     rightArrow.forEach((e) => e.classList.remove("hide"));
   }
-  if (!getPreviousReveal()) {
+  if (!getPreviousFocusable()) {
     leftArrow.forEach((e) => e.classList.add("hide"));
   } else {
     leftArrow.forEach((e) => e.classList.remove("hide"));
@@ -111,74 +110,67 @@ function refreshControls() {
 
 function focusNext() {
   currentSection().scrollIntoView({ behavior: "instant" });
-  const nextReveal = getNextReveal();
-  if (!!nextReveal) {
-    clearSectionFocus();
-    focus(nextReveal);
+  const nextFocusable = getNextFocusable();
+  if (!!nextFocusable) {
+    clearFocus();
+    focus(nextFocusable);
     refreshControls();
   }
 }
 
 function focusPrevious() {
   currentSection().scrollIntoView({ behavior: "instant" });
-  const previousReveal = getPreviousReveal();
-  if (!!previousReveal) {
-    const focusedReveal = getFocusedElement();
-    unfocus(focusedReveal);
-    clearSectionFocus();
-    focus(previousReveal);
+  const previousFocusable = getPreviousFocusable();
+  if (!!previousFocusable) {
+    const focused = getFocusedElement();
+    unfocus(focused);
+    clearFocus();
+    focus(previousFocusable);
     refreshControls();
   }
 }
 
-function getNextReveal() {
-  const reveals = getReveals(currentSection());
-  const currentRevealIndex = reveals.findIndex((e) =>
+function getNextFocusable() {
+  const focusables = getFocusables();
+  const currentFocusableIndex = focusables.findIndex((e) =>
     e.classList.contains("focus")
   );
-  if (currentRevealIndex === reveals.length - 1) {
+  if (currentFocusableIndex === focusables.length - 1) {
     return undefined;
   } else {
-    return reveals[currentRevealIndex + 1];
+    return focusables[currentFocusableIndex + 1];
   }
 }
 
-function getPreviousReveal() {
-  const reveals = getReveals(currentSection());
-  const currentRevealIndex = reveals.findIndex((e) =>
+function getPreviousFocusable() {
+  const focusables = getFocusables();
+  const currentFocusableIndex = focusables.findIndex((e) =>
     e.classList.contains("focus")
   );
-  if (currentRevealIndex === 0) {
+  if (currentFocusableIndex === 0) {
     return undefined;
   } else {
-    return reveals[currentRevealIndex - 1];
+    return focusables[currentFocusableIndex - 1];
   }
 }
 
-function getReveals(e) {
-  let reveals = [];
-  if (isReveal(e)) reveals.push(e);
-  if (e.children.length > 0)
-    reveals.push(...Array.from(e.children).flatMap(getReveals));
-  return reveals;
-}
-
-function isReveal(e) {
-  return e.classList.contains("reveal");
+function getFocusables() {
+  return Array.from(currentSection().querySelectorAll(".focusable, .reveal"));
 }
 
 function focus(e) {
   e.classList.add("focus");
-  e.classList.add("revealed");
+  if (e.classList.contains("reveal")) {
+    e.classList.add("revealed");
+  }
 }
 
 function unfocus(e) {
   e.classList.remove("focus");
   e.classList.remove("revealed");
-  Array.from(e.children).forEach(unfocus);
 }
 
-function clearSectionFocus() {
+function clearFocus() {
   currentSection()
     .querySelectorAll(".focus")
     .forEach((e) => e.classList.remove("focus"));
