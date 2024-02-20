@@ -49,6 +49,7 @@ section {
   border-bottom: 1px solid var(--secondaryTextColour);
   overflow: scroll;
   position: relative;
+  font-size: 0.5rem;
 }
 
 h1 {
@@ -73,7 +74,6 @@ h3 {
 }
 
 p {
-  font-size: 1rem;
   margin: 1em 0;
 }
 
@@ -96,25 +96,15 @@ ol li {
   list-style-type: decimal;
 }
 
-.animate-in {
-  opacity: 0;
-}
-
-.animated-in {
-  opacity: 1;
-}
-
 .focus,
 .focus-sticky {
   color: var(--textColour);
 }
 
-.focus::before:not(ol):not(ul) {
-  content: "";
-  position: absolute;
-  left: 0;
-  height: 1em;
-  width: 2px;
-  background-color: var(--textColour);
-  filter: blur(3px);
+.apple {
+  opacity: 0;
+}
+
+.appled {
+  opacity: 1;
 }
