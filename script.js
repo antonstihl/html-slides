@@ -121,8 +121,11 @@ function focusNext() {
 function focusPrevious() {
   currentSection().scrollIntoView({ behavior: "instant" });
   const previousFocusable = getPreviousFocusable();
-  if (!!previousFocusable) {
-    const focused = getFocusedElement();
+  const focused = getFocusedElement();
+  if (!previousFocusable) {
+    clearFocus();
+    unfocus(focused);
+  } else {
     unfocus(focused);
     clearFocus();
     focus(previousFocusable);
