@@ -100,10 +100,17 @@ ol li {
   color: var(--textColour);
 }
 
-.reveal {
+.f-reveal {
   opacity: 0;
 }
 
-.revealed {
+.focused {
   opacity: 1;
+}
+
+.cool.focused {
+  display: inline-block;
+  transform: skew(-5deg, 0);
+  background-color: coral;
+  color: black;
 }

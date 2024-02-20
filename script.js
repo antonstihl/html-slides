@@ -158,19 +158,21 @@ function getPreviousFocusable() {
 }
 
 function getFocusables() {
-  return Array.from(currentSection().querySelectorAll(".focusable, .reveal"));
+  return Array.from(
+    currentSection().querySelectorAll(
+      ".focusable, .f, .focusable-reveal, .f-reveal, .fr"
+    )
+  );
 }
 
 function focus(e) {
   e.classList.add("focus");
-  if (e.classList.contains("reveal")) {
-    e.classList.add("revealed");
-  }
+  e.classList.add("focused");
 }
 
 function unfocus(e) {
   e.classList.remove("focus");
-  e.classList.remove("revealed");
+  e.classList.remove("focused");
 }
 
 function clearFocus() {
