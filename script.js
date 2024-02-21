@@ -13,7 +13,6 @@ addEventListener("click", () => {
 });
 
 document.querySelector("section").classList.add("current");
-focusNext();
 refreshControls();
 
 addEventListener("keydown", (e) => {
@@ -68,9 +67,6 @@ function goToNextSection() {
   currentSection().classList.remove("current");
   next.scrollIntoView();
   next.classList.add("current");
-  if (!getFocusedElement()) {
-    initializeFocus();
-  }
   refreshControls();
 }
 
@@ -82,18 +78,7 @@ function goToPreviousSection() {
   currentSection().classList.remove("current");
   previous.scrollIntoView();
   previous.classList.add("current");
-  if (!getFocusedElement()) {
-    initializeFocus();
-  }
   refreshControls();
-}
-
-function getFocusedElement() {
-  return currentSection().querySelector(".focus");
-}
-
-function initializeFocus() {
-  getNextFocusable()?.classList.add("focus");
 }
 
 function refreshControls() {
@@ -121,82 +106,74 @@ function refreshControls() {
 
 function focusNext() {
   currentSection().scrollIntoView({ behavior: "instant" });
-  const nextFocusableElement = getNextFocusable();
-  if (!!nextFocusableElement) {
-    clearSectionFocus();
-    focus(nextFocusableElement);
+  const nextFocusable = getNextFocusable();
+  if (!!nextFocusable) {
+    clearFocus();
+    focus(nextFocusable);
     refreshControls();
   }
-}
-
-function focus(e) {
-  e.classList.add("focus");
-  if (e.classList.contains("animate-in")) {
-    e.classList.add("animated-in");
-  }
-  Array.from(e.children).forEach(focus);
-}
-
-function unfocus(e) {
-  e.classList.remove("focus");
-  if (e.classList.contains("animated-in")) {
-    e.classList.remove("animated-in");
-  }
-  Array.from(e.children).forEach(unfocus);
 }
 
 function focusPrevious() {
   currentSection().scrollIntoView({ behavior: "instant" });
-  const previousFocusableElement = getPreviousFocusable();
-  if (!!previousFocusableElement) {
-    const focusedElement = getFocusedElement();
-    unfocus(focusedElement);
-    clearSectionFocus();
-    focus(previousFocusableElement);
+  const previousFocusable = getPreviousFocusable();
+  console.log({ previousFocusable });
+  const focused = currentSection().querySelector(".current-focus");
+  if (!previousFocusable) {
+    clearFocus();
+    unfocus(focused);
+  } else {
+    unfocus(focused);
+    clearFocus();
+    focus(previousFocusable);
     refreshControls();
   }
 }
 
-function clearSectionFocus() {
-  currentSection()
-    .querySelectorAll(".focus")
-    .forEach((e) => e.classList.remove("focus"));
-}
-
 function getNextFocusable() {
-  const focusableElements = getFocusableChildren(currentSection());
-  const focusedElementIndex = focusableElements.findIndex((e) =>
-    e.classList.contains("focus")
+  const focusables = getFocusables();
+  const currentFocusableIndex = focusables.findIndex((e) =>
+    e.classList.contains("current-focus")
   );
-  if (focusedElementIndex === focusableElements.length - 1) {
+  if (currentFocusableIndex === focusables.length - 1) {
     return undefined;
   } else {
-    return focusableElements[focusedElementIndex + 1];
+    return focusables[currentFocusableIndex + 1];
   }
 }
 
 function getPreviousFocusable() {
-  const focusableElements = getFocusableChildren(currentSection());
-  const focusedElementIndex = focusableElements.findIndex((e) =>
-    e.classList.contains("focus")
+  const focusables = getFocusables();
+  const currentFocusableIndex = focusables.findIndex((e) =>
+    e.classList.contains("current-focus")
   );
-  if (focusedElementIndex === 0) {
+  if (currentFocusableIndex === 0) {
     return undefined;
   } else {
-    return focusableElements[focusedElementIndex - 1];
+    return focusables[currentFocusableIndex - 1];
   }
 }
 
-function getFocusableChildren(p) {
-  return Array.from(p.children).flatMap((e) => {
-    if (e.children.length > 0) {
-      if (e.classList.contains("focusable")) {
-        return [e];
-      } else {
-        return [...getFocusableChildren(e)];
-      }
-    } else {
-      return [e];
-    }
-  });
+function getFocusables() {
+  return Array.from(
+    currentSection().querySelectorAll(
+      ".focusable, .f, .focusable-reveal, .f-reveal, .fr"
+    )
+  );
+}
+
+function focus(e) {
+  e.classList.add("current-focus");
+  e.classList.add("previous-focus");
+}
+
+function unfocus(e) {
+  e.classList.remove("current-focus");
+  e.classList.remove("previous-focus");
+}
+
+function clearFocus() {
+  currentSection()
+    .querySelectorAll(".current-focus")
+    .forEach((e) => e.classList.remove("current-focus"));
 }

@@ -13,9 +13,8 @@
 }
 
 .clean-btn {
-  fill: var(--textColour);
   stroke: var(--textColour);
-  stroke-width: 1;
+  stroke-width: 2;
   transition-property: all;
   transition-duration: var(--transitionDuration);
 }
