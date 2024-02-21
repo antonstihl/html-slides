@@ -95,7 +95,7 @@ ol li {
   list-style-type: decimal;
 }
 
-.focus,
+.current-focus,
 .focus-sticky {
   color: var(--textColour);
 }
@@ -104,11 +104,11 @@ ol li {
   opacity: 0;
 }
 
-.focused {
+.previous-focus {
   opacity: 1;
 }
 
-.cool.focused {
+.cool.previous-focus {
   display: inline-block;
   transform: skew(-5deg, 0);
   background-color: coral;
