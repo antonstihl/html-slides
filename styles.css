@@ -100,7 +100,7 @@ ol li {
   color: var(--textColour);
 }
 
-.f-reveal {
+.focusable-reveal, .f-reveal, .fr {
   opacity: 0;
 }
 
