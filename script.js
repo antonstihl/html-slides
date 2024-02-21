@@ -81,10 +81,6 @@ function goToPreviousSection() {
   refreshControls();
 }
 
-function getFocusedElement() {
-  return currentSection().querySelector(".current-focus");
-}
-
 function refreshControls() {
   if (!previousSection()) {
     upArrow.forEach((e) => e.classList.add("hide"));
@@ -122,7 +118,7 @@ function focusPrevious() {
   currentSection().scrollIntoView({ behavior: "instant" });
   const previousFocusable = getPreviousFocusable();
   console.log({ previousFocusable });
-  const focused = getFocusedElement();
+  const focused = currentSection().querySelector(".current-focus");
   if (!previousFocusable) {
     clearFocus();
     unfocus(focused);
