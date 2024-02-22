@@ -100,17 +100,12 @@ ol li {
   color: var(--textColour);
 }
 
-.focusable-reveal, .f-reveal, .fr {
+.focusable-reveal,
+.f-reveal,
+.fr {
   opacity: 0;
 }
 
 .previous-focus {
   opacity: 1;
-}
-
-.cool.previous-focus {
-  display: inline-block;
-  transform: skew(-5deg, 0);
-  background-color: coral;
-  color: black;
 }

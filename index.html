@@ -7,10 +7,15 @@
   <title>Presentation</title>
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📽️</text></svg>">
-  <link rel="stylesheet" href="reset-styles.css" />
-  <link rel="stylesheet" href="control-styles.css" />
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="script.js"></script>
+  <!-- <link rel="stylesheet" href="lib/styles.css" /> -->
+  <!-- <script defer src="lib/core-script.js"></script> -->
+  <script defer src="https://cdn.jsdelivr.net/gh/antonstihl/html-slides@refactor/enable-reuse/lib/loader.js"></script>
+  <style>
+    .cool.previous-focus {
+      background-color: coral;
+      color: black;
+    }
+  </style>
 </head>
 
 <body>
@@ -36,7 +41,7 @@
         <li class="f-reveal">And this of course</li>
       </ul>
       <p class="focusable">Always on focusable paragraph</p>
-
+      <blockquote>Hey oh</blockquote>
     </section>
     <section>
       <h2>Solution</h2>
@@ -89,7 +94,8 @@
       </ol>
     </section>
   </div>
-  <div id="clean-cpad" class="cpad">
+  <pre id="cpad"/>
+  <!-- <div id="clean-cpad" class="cpad">
     <svg width="25px" height="25px" viewBox="0 0 100 100">
       <path d="M 35 20 q 15 -30 30 0" class="clean-btn arrow-up" />
       <path d="M 35 80 q 15 30 30 0" class="clean-btn arrow-down" />
@@ -109,7 +115,7 @@
       <polygon points="50,40 60,57 40,57" class="yellow-btn-depression arrow-left" />
       <polygon points="50,40 60,57 40,57" class="yellow-btn-depression arrow-down" />
     </svg>
-  </div>
+  </div> -->
 </body>
 
 </html>
