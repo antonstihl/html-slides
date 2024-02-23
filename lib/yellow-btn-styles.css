@@ -12,13 +12,6 @@
   transition-duration: var(--transitionDuration);
 }
 
-.clean-btn {
-  stroke: var(--textColour);
-  stroke-width: 2;
-  transition-property: all;
-  transition-duration: var(--transitionDuration);
-}
-
 .yellow-btn-depression {
   fill: rgb(209, 156, 24);
   opacity: 1;
