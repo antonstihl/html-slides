@@ -7,7 +7,9 @@
   <title>Presentation</title>
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📽️</text></svg>">
-  <script defer src="https://cdn.jsdelivr.net/gh/antonstihl/html-slides/lib/loader.js"></script>
+  <script defer src="../lib/core-script.js"></script>
+  <link rel="stylesheet" href="../lib/styles.css">
+  </link>
   <style>
     .cool.previous-focus {
       background-color: coral;
@@ -93,6 +95,28 @@
     </section>
   </div>
   <pre id="cpad"></pre>
+  <div id="clean-cpad" class="cpad">
+    <svg width="25px" height="25px" viewBox="0 0 100 100">
+      <path d="M 35 20 q 15 -30 30 0" class="clean-btn arrow-up" />
+      <path d="M 35 80 q 15 30 30 0" class="clean-btn arrow-down" />
+      <path d="M 20 35 q -30 15 0 30" class="clean-btn arrow-left" />
+      <path d="M 80 35 q 30 15 0 30" class="clean-btn arrow-right" />
+    </svg>
+  </div>
+  <!--
+  <div id="n64-cpad" class="cpad hide">
+    <svg width="50px" height="50px" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="40" class="cpad-ring" />
+      <circle cx="50" cy="15" r="14" class="yellow-btn arrow-up" />
+      <circle cx="15" cy="50" r="14" class="yellow-btn arrow-left" />
+      <circle cx="85" cy="50" r="14" class="yellow-btn arrow-right" />
+      <circle cx="50" cy="85" r="14" class="yellow-btn arrow-down" />
+      <polygon points="50,40 60,57 40,57" class="yellow-btn-depression arrow-up"></polygon>
+      <polygon points="50,40 60,57 40,57" class="yellow-btn-depression arrow-right" />
+      <polygon points="50,40 60,57 40,57" class="yellow-btn-depression arrow-left" />
+      <polygon points="50,40 60,57 40,57" class="yellow-btn-depression arrow-down" />
+    </svg>
+  </div> -->
 </body>
 
 </html>
