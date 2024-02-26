@@ -176,7 +176,7 @@ table {
 
 html,
 body {
-  overflow: hidden;
+  overflow: scroll;
 }
 
 body {
