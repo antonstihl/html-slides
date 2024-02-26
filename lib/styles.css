@@ -184,7 +184,7 @@ body {
   color: var(--secondaryTextColour);
 }
 
-.slide-deck {
+#slide-deck {
   height: 100vh;
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
