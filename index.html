@@ -7,11 +7,33 @@
   <title>Presentation</title>
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📽️</text></svg>">
-  <script defer src="https://cdn.jsdelivr.net/gh/antonstihl/html-slides/lib/loader.js"></script>
+  <script defer src="./lib/core-script.js"></script>
+  <link rel="stylesheet" href="./lib/styles.css" />
   <style>
     .cool.previous-focus {
       background-color: coral;
       color: black;
+    }
+
+    .sassy.previous-focus {
+      display: inline-block;
+      transform: skewX(-20deg);
+      color: coral;
+    }
+
+    .blur-in {
+      animation-name: deblur;
+      animation-duration: 3s;
+      animation-fill-mode: both;
+    }
+
+    @keyframes deblur {
+      from {
+        filter:blur(10px);
+      }
+      to {
+        filter:blur(0);
+      }
     }
   </style>
 </head>
@@ -19,76 +41,53 @@
 <body>
   <div id="slide-deck">
     <section>
-      <h2>Section header</h2>
-      <h3 class="f">Problems</h3>
-      <p class="f">Hey oh show me always</p>
-      <p class="f-reveal">
-        And what about <span class="f cool">this cool animated span</span> and
-        in the same paragraph there is <span class="f cool">this other-cool span</span>
-        and then there's this <span class="f cool">awesome sticky span</span>
-      </p>
-      <div class="f-reveal">
-        Reveal this div!
-        <div class="f-reveal">
-          And this inner div!
-        </div>
-      </div>
-      <ul>
-        <li class="f-reveal">This</li>
-        <li class="f-reveal">That</li>
-        <li class="f-reveal">And this of course</li>
-      </ul>
-      <p class="focusable">Always on focusable paragraph</p>
-      <blockquote>Hey oh</blockquote>
+      <h1>HATEPRES</h1>
+      <p class="blur-in">Hypermedia As The Engine of Presentation</p>
     </section>
     <section>
-      <h2>Solution</h2>
-      <h3 class="f-reveal">The process</h3>
-      <p class="focusable-reveal">A new approach. Let's do this. Benefits?</p>
-      <ul>
-        <li class="fr">First conceptual thing</li>
-        <li class="fr">Some buzz words</li>
-        <li class="fr">Yay</li>
-      </ul>
-      <h3 class="f-reveal">The process one more time</h3>
+      <h2>A presentation library</h2>
+      <p class="fr">HATEPRES provides tooling to render semantic HTML as a delightful visual aid for your presentation.
+      </p>
       <ol>
-        <li class="f-reveal focus-sticky">Fluff one</li>
-        <li class="f-reveal">Fluff two</li>
-        <li class="fr">Fluff two.five</li>
-        <li class="f-reveal">Fluff three</li>
+        <li class="fr">Wrap all sections (slides) in a div with id <code>slide-deck</code>
+          <pre>
+            <code>
+&lt;div id="slide-deck"&gt;
+  &lt;section&gt;...&lt;section&gt;
+  &lt;section&gt;...&lt;section&gt;
+&lt;/div&gt;
+            </code>
+          </pre>
+        </li>
+        <li class="fr">Add the head style tag</li>
+        <li class="fr">Add the head script tag, deferred</li>
+        <li class="fr">(Optional) add a cpad element, <code>&lt;pre id="cpad"&gt;&lt;/pre&gt;</code></li>
+        <li class="fr">Add class <code>focusable</code> (<code>f</code>) or <code>focusable-reveal</code> (<code>fr</code>) to make elements focusable and revealable, respectively.</li>
+        <li class="fr">✅ Done!</li>
       </ol>
     </section>
     <section>
-      <h2>David JP Phillips keynote takeaways</h2>
-      <ul>
-        <li class="f-reveal">One message per slide</li>
-        <li class="f-reveal">Use contrast and size to direct attention</li>
-        <li class="f-reveal">Don't write sentences</li>
-        <li class="f-reveal">Dark bakground</li>
-        <li class="f-reveal">Maximum of 6 items per slide</li>
-      </ul>
-      <img src="https://i.imgur.com/2g4wnAJ.gif" height="100px">
-    </section>
-    <section>
-      <h1>About Stuff</h1>
-    </section>
-    <section>
-      <h2>Background</h2>
-      <p>We cannot do things the old-fashioned way.</p>
-      <ul>
-        <li class="f-reveal">Reason 1</li>
-        <li class="f-reveal">Reason 2</li>
-        <li class="f-reveal">Reason 3</li>
+      <h2>Bonus</h2>
+      <p class="fr">Hook into the classes used by HATEPRES to <span class="sassy f">style your elements</span> as your
+        presentation progresses.</p>
+      <ul class="fr">
+        <li>current-section</li>
+        <li>current-focus</li>
+        <li>previous-focus</li>
       </ul>
     </section>
     <section>
-      <h2>New page</h2>
-      <p>Try this!</p>
-      <blockquote>It's good! Says everyone</blockquote>
+      <h2>Philosophy</h2>
+      <p class="fr">Some of the key characteristics of HATEPRES come from David JP Phillips TEDx talk, <a
+          href="https://youtu.be/Iwpi1Lm6dFo?si=ZWBpE1KRV_Ys9pdU">How to avoid death by PowerPoint.</a></p>
       <ol>
-        <li class="f-reveal">one thing</li>
-        <li class="f-reveal">next thing</li>
-        <li class="f-reveal">third thing</li>
+        <ul>
+          <li class="fr">One message per slide</li>
+          <li class="fr">Use contrast and size to direct attention</li>
+          <li class="fr">Don't write sentences</li>
+          <li class="fr">Dark bakground</li>
+          <li class="fr">Maximum of 6 items per slide</li>
+        </ul>
       </ol>
     </section>
   </div>
