@@ -253,6 +253,10 @@ p {
   margin: 1em 0;
 }
 
+em {
+  font-style: italic;
+}
+
 a {
   color: var(--secondaryTextColour);
 }
