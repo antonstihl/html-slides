@@ -161,11 +161,11 @@ table {
   opacity: 1;
 }
 
-:has(section.current .previous-focus:not(.current-focus)) .arrow-left {
+:has(section.current .previous-focus) .arrow-left {
   opacity: 1;
 }
 
-:has(section.current :is([hp-fr], [hp-f]):not(.previous-focus)) .arrow-right {
+:has(section.current :is(.fr, .f):not(.previous-focus)) .arrow-right {
   opacity: 1;
 }
 
@@ -211,7 +211,7 @@ code {
   font-size: 0.8rem;
 }
 
-#slide-deck {
+#html-slides {
   height: 100vh;
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
@@ -221,12 +221,10 @@ code {
 section {
   box-sizing: border-box;
   min-height: 100vh;
-  padding-top: 3rem;
-  padding-left: 2rem;
+  padding: 3rem 2rem;
   scroll-snap-align: start;
   border-bottom: 1px solid var(--secondaryTextColour);
   overflow: scroll;
-  position: relative;
   font-size: 1rem;
 }
 
@@ -286,7 +284,7 @@ ol li {
   list-style-type: decimal;
 }
 
-[hp-fr] {
+.fr {
   opacity: 0;
 }
 

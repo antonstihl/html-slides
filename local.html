@@ -40,38 +40,38 @@
 </head>
 
 <body>
-  <div id="slide-deck">
+  <div id="html-slides">
     <section>
       <h1>HATEPRES</h1>
       <p class="blur-in">Hypermedia As The Engine of Presentation</p>
     </section>
     <section>
       <h2>A presentation library</h2>
-      <p hp-fr>HATEPRES provides tooling to render semantic HTML as a delightful visual aid for your presentation.
+      <p class="fr">HATEPRES provides tooling to render semantic HTML as a delightful visual aid for your presentation.
       </p>
       <ol>
-        <li hp-fr>Wrap all sections (slides) in a div with id <code>slide-deck</code>
+        <li class="fr">Wrap all sections (slides) in a div with id <code>html-slides</code>
           <pre>
             <code>
-&lt;div id="slide-deck"&gt;
+&lt;div id="html-slides"&gt;
   &lt;section&gt;...&lt;section&gt;
   &lt;section&gt;...&lt;section&gt;
 &lt;/div&gt;
             </code>
           </pre>
         </li>
-        <li hp-fr>Add the head style tag</li>
-        <li hp-fr>Add the head script tag, deferred</li>
-        <li hp-fr>(Optional) add a cpad element, <code>&lt;pre id="cpad"&gt;&lt;/pre&gt;</code></li>
-        <li hp-fr>Add attribute <code>hp-f</code> (focusable) or <code>hp-fr</code> (focusable revealable) to make elements focusable and focusable+revealable, respectively.</li>
-        <li hp-fr>✅ Done!</li>
+        <li class="fr">Add the head style tag</li>
+        <li class="fr">Add the head script tag, deferred</li>
+        <li class="fr">(Optional) add a cpad element, <code>&lt;pre id="cpad"&gt;&lt;/pre&gt;</code></li>
+        <li class="fr">Add class <code>f</code> (focusable) or <code>fr</code> (focusable revealable) to make elements focusable and focusable+revealable, respectively.</li>
+        <li class="fr">✅ Done!</li>
       </ol>
     </section>
     <section>
       <h2>Bonus</h2>
-      <p hp-fr>Hook into the classes used by HATEPRES to <span hp-f class="sassy">style your elements</span> as your
+      <p class="fr">Hook into the classes used by HATEPRES to <span class="f sassy">style your elements</span> as your
         presentation progresses.</p>
-      <ul hp-fr>
+      <ul class="fr">
         <li>current-section</li>
         <li>current-focus</li>
         <li>previous-focus</li>
@@ -79,15 +79,15 @@
     </section>
     <section>
       <h2>Philosophy</h2>
-      <p hp-fr>Some of the key characteristics of HATEPRES come from David JP Phillips TEDx talk, <a
+      <p class="fr">Some of the key characteristics of HATEPRES come from David JP Phillips TEDx talk, <a
           href="https://youtu.be/Iwpi1Lm6dFo?si=ZWBpE1KRV_Ys9pdU">How to avoid death by PowerPoint.</a></p>
       <ol>
         <ul>
-          <li hp-fr>One message per slide</li>
-          <li hp-fr>Use contrast and size to direct attention</li>
-          <li hp-fr>Don't write sentences</li>
-          <li hp-fr>Dark bakground</li>
-          <li hp-fr>Maximum of 6 items per slide</li>
+          <li class="fr">One message per slide</li>
+          <li class="fr">Use contrast and size to direct attention</li>
+          <li class="fr">Don't write sentences</li>
+          <li class="fr">Dark bakground</li>
+          <li class="fr">Maximum of 6 items per slide</li>
         </ul>
       </ol>
     </section>
