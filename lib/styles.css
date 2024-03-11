@@ -225,7 +225,6 @@ section {
   scroll-snap-align: start;
   border-bottom: 1px solid var(--secondaryTextColour);
   overflow: scroll;
-  font-size: 1rem;
 }
 
 h1 {
@@ -269,11 +268,8 @@ ol {
 
   li {
     margin: 0.5em 1em;
+    overflow-wrap: break-word;
   }
-}
-
-li {
-  overflow-wrap: break-word;
 }
 
 ul li {
@@ -291,7 +287,7 @@ ol li {
 .previous-focus {
   opacity: 1;
 
-  *:not(a) {
+  * {
     transition-duration: 0s;
   }
 }
