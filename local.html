@@ -7,8 +7,9 @@
   <title>Presentation</title>
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📽️</text></svg>">
-  <script defer src="https://cdn.jsdelivr.net/gh/antonstihl/html-slides/lib/script.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/antonstihl/html-slides/lib/styles.css" />
+  <script defer src="lib/script.js"></script>
+  <link rel="stylesheet" href="lib/styles.css">
+  </link>
   <style>
     .cool.previous-focus {
       background-color: coral;
@@ -41,7 +42,7 @@
 <body>
   <div id="slide-deck">
     <section>
-      <h1>HATEPRES</h1>
+      <h1 class="focus-sticky">HATEPRES</h1>
       <p class="blur-in">Hypermedia As The Engine of Presentation</p>
     </section>
     <section>
@@ -62,7 +63,8 @@
         <li class="fr">Add the head style tag</li>
         <li class="fr">Add the head script tag, deferred</li>
         <li class="fr">(Optional) add a cpad element, <code>&lt;pre id="cpad"&gt;&lt;/pre&gt;</code></li>
-        <li class="fr">Add class <code>focusable</code> (<code>f</code>) or <code>focusable-reveal</code> (<code>fr</code>) to make elements focusable and revealable, respectively.</li>
+        <li class="fr">Add class <code>focusable</code> (<code>f</code>) or <code>focusable-reveal</code>
+          (<code>fr</code>) to make elements focusable and revealable, respectively.</li>
         <li class="fr">✅ Done!</li>
       </ol>
     </section>
@@ -92,6 +94,20 @@
     </section>
   </div>
   <pre id="cpad"></pre>
+  <!--
+  <div id="n64-cpad" class="cpad hide">
+    <svg width="50px" height="50px" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="40" class="cpad-ring" />
+      <circle cx="50" cy="15" r="14" class="yellow-btn arrow-up" />
+      <circle cx="15" cy="50" r="14" class="yellow-btn arrow-left" />
+      <circle cx="85" cy="50" r="14" class="yellow-btn arrow-right" />
+      <circle cx="50" cy="85" r="14" class="yellow-btn arrow-down" />
+      <polygon points="50,40 60,57 40,57" class="yellow-btn-depression arrow-up"></polygon>
+      <polygon points="50,40 60,57 40,57" class="yellow-btn-depression arrow-right" />
+      <polygon points="50,40 60,57 40,57" class="yellow-btn-depression arrow-left" />
+      <polygon points="50,40 60,57 40,57" class="yellow-btn-depression arrow-down" />
+    </svg>
+  </div> -->
 </body>
 
 </html>
