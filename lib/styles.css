@@ -257,7 +257,11 @@ p {
 }
 
 a {
-  color: rgb(209, 130, 209);
+  color: var(--secondaryTextColour);
+}
+
+.current-focus a {
+  color: rgb(0, 130, 209);
 }
 
 ul,
@@ -282,11 +286,6 @@ ol li {
   list-style-type: decimal;
 }
 
-.current-focus,
-.focus-sticky {
-  color: var(--textColour);
-}
-
 [hp-fr] {
   opacity: 0;
 }
@@ -294,8 +293,12 @@ ol li {
 .previous-focus {
   opacity: 1;
 
-  * {
+  *:not(a) {
     transition-duration: 0s;
   }
 }
 
+.current-focus,
+.focus-sticky {
+  color: var(--textColour);
+}
