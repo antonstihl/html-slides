@@ -72,7 +72,6 @@ section {
   min-height: 100vh;
   padding: 3rem 2rem;
   scroll-snap-align: start;
-  border-bottom: 1px solid var(--secondaryTextColour);
   overflow: scroll;
 }
 
