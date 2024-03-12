@@ -146,6 +146,10 @@ ol li {
   opacity: 0;
 }
 
+section:not(:has(.current-focus)) :first-child {
+  color: var(--textColour);
+}
+
 .previous-focus {
   opacity: 1;
 
