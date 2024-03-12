@@ -15,7 +15,7 @@
   background-color: var(--secondaryTextColour);
 }
 
-:has(section.current :is(.f, .fp):not(.previous-focus)) .indicator-circle {
+:has(section.current .f:not(.previous-focus)) .indicator-circle {
   background-color: transparent;
 }
 
@@ -142,7 +142,7 @@ ol li {
   transition-duration: 500ms;
 }
 
-.f {
+:where(.f:not(.p)) {
   opacity: 0;
 }
 

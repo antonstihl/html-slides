@@ -139,7 +139,7 @@ function getPreviousFocusable() {
 }
 
 function getFocusables() {
-  return Array.from(currentSection().querySelectorAll(".f, .fp"));
+  return Array.from(currentSection().querySelectorAll(".f"));
 }
 
 function focus(e) {
