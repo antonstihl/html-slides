@@ -1,15 +1,7 @@
 const cpadPlaceholder = document.querySelector("pre#cpad");
 if (cpadPlaceholder) {
   const cpad = document.createElement("div");
-  cpad.id = "clean-cpad";
-  cpad.classList.add("cpad");
-  cpad.innerHTML = `
-    <svg width="25px" height="25px" viewBox="0 0 100 100">
-      <path d="M 35 20 q 15 -30 30 0" class="clean-btn arrow-up" />
-      <path d="M 35 80 q 15 30 30 0" class="clean-btn arrow-down" />
-      <path d="M 20 35 q -30 15 0 30" class="clean-btn arrow-left" />
-      <path d="M 80 35 q 30 15 0 30" class="clean-btn arrow-right" />
-    </svg>`;
+  cpad.classList.add("indicator-circle");
   cpadPlaceholder.replaceWith(cpad);
 } else {
   console.log("No <pre> #cpad element in document.");

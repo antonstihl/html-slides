@@ -138,35 +138,23 @@ table {
   Control styles
 ****************/
 
-.cpad {
+.indicator-circle {
   position: fixed;
   bottom: 1rem;
   right: 1rem;
+  width: 10px;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  border: 1px solid var(--secondaryTextColour);
+  background-color: var(--secondaryTextColour);
 }
 
-.clean-btn {
-  stroke: var(--textColour);
-  stroke-width: 2;
+:has(section.current :is(.fr, .f):not(.previous-focus)) .indicator-circle {
+  background-color: transparent;
 }
 
-:where(.clean-btn) {
-  opacity: 0;
-}
-
-:has(section ~ section.current) .arrow-up {
-  opacity: 1;
-}
-
-:has(section.current + section) .arrow-down {
-  opacity: 1;
-}
-
-:has(section.current .previous-focus) .arrow-left {
-  opacity: 1;
-}
-
-:has(section.current :is(.fr, .f):not(.previous-focus)) .arrow-right {
-  opacity: 1;
+:not(:has(section.current ~ section)) .indicator-circle{
+  border-radius: 1px;
 }
 
 /****************
@@ -183,7 +171,7 @@ table {
 }
 
 * {
-  transition-property: all;
+  transition-property: opacity;
   transition-duration: 500ms;
 }
 
