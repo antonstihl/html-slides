@@ -1,10 +1,10 @@
-const cpadPlaceholder = document.querySelector("pre#cpad");
-if (cpadPlaceholder) {
-  const cpad = document.createElement("div");
-  cpad.classList.add("indicator-circle");
-  cpadPlaceholder.replaceWith(cpad);
+const indicatorPlaceholder = document.querySelector("pre#indicator");
+if (indicatorPlaceholder) {
+  const indicator = document.createElement("div");
+  indicator.classList.add("indicator-circle");
+  indicatorPlaceholder.replaceWith(indicator);
 } else {
-  console.log("No <pre> #cpad element in document.");
+  console.log("No <pre> #indicator element in document.");
 }
 
 const leftArrow = document.querySelectorAll(".arrow-left");
