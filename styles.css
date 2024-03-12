@@ -1,7 +1,7 @@
 @import url(reset-styles.css);
 
 /****************
-  Control styles
+  Indicator
 ****************/
 
 .indicator-circle {
@@ -24,7 +24,7 @@
 }
 
 /****************
-  Core styles
+  Basic
 ****************/
 
 :root {
@@ -34,11 +34,6 @@
   --bgColour: black;
   --textColour: rgb(220, 220, 220);
   --secondaryTextColour: rgb(122, 122, 122);
-}
-
-* {
-  transition-property: opacity;
-  transition-duration: 500ms;
 }
 
 .light-mode {
@@ -136,6 +131,15 @@ ul li {
 
 ol li {
   list-style-type: decimal;
+}
+
+/****************
+  Transitive
+****************/
+
+* {
+  transition-property: opacity;
+  transition-duration: 500ms;
 }
 
 .fr {
