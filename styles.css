@@ -15,7 +15,7 @@
   background-color: var(--secondaryTextColour);
 }
 
-:has(section.current .f:not(.previous-focus)) .indicator-circle {
+:has(section.current .f:not(.focus-trace)) .indicator-circle {
   background-color: transparent;
 }
 
