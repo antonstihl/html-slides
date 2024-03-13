@@ -1,6 +1,8 @@
 # HTML Slides
 
-This project aims to ease the somewhat challenging activity of crafting a slide deck as visual aid for a spoken presentation.
+This project aims to ease the challenging activity of crafting a slide deck as visual aid for a spoken presentation, by leveraging the power of HTML, JS and CSS.
+
+Have a look at (and inspect) this page to see HTML-slides in action: https://antonstihl.github.io/html-slides/
 
 The preferred workflow is that an author _only_ composes semantic HTML for their presentation's content.
 
