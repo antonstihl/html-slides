@@ -145,7 +145,7 @@ ol li {
   opacity: 0;
 }
 
-.previous-focus {
+.focus-trace {
   opacity: 1;
 }
 

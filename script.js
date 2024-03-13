@@ -94,8 +94,8 @@ function goToPreviousSection() {
 function focusNext() {
   currentSection().scrollIntoView({ behavior: "instant" });
   const nextFocusable = getNextFocusable();
-  if (!!nextFocusable) {
-    clearFocus();
+  if (nextFocusable) {
+    makeCurrentFocusPreviousFocus();
     focus(nextFocusable);
   }
 }
@@ -104,12 +104,9 @@ function focusPrevious() {
   currentSection().scrollIntoView({ behavior: "instant" });
   const previousFocusable = getPreviousFocusable();
   const focused = currentSection().querySelector(".current-focus");
-  if (!previousFocusable) {
-    clearFocus();
-    unfocus(focused);
-  } else {
-    unfocus(focused);
-    clearFocus();
+  revertFocus(focused);
+  makeCurrentFocusPreviousFocus();
+  if (previousFocusable) {
     focus(previousFocusable);
   }
 }
@@ -143,17 +140,19 @@ function getFocusables() {
 }
 
 function focus(e) {
-  e?.classList.add("current-focus");
-  e?.classList.add("previous-focus");
-}
-
-function unfocus(e) {
-  e?.classList.remove("current-focus");
+  e?.classList.add("current-focus", "focus-trace");
   e?.classList.remove("previous-focus");
 }
 
-function clearFocus() {
+function revertFocus(e) {
+  e?.classList.remove("current-focus", "previous-focus", "focus-trace");
+}
+
+function makeCurrentFocusPreviousFocus() {
   currentSection()
     .querySelectorAll(".current-focus")
-    .forEach((e) => e.classList.remove("current-focus"));
+    .forEach((e) => {
+      e.classList.remove("current-focus");
+      e.classList.add("previous-focus");
+    });
 }

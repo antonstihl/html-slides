@@ -11,12 +11,7 @@
   <link rel="stylesheet" href="styles.css">
   </link>
   <style>
-    .cool.previous-focus {
-      background-color: coral;
-      color: black;
-    }
-
-    .sassy.previous-focus {
+    .sassy.focus-trace {
       display: inline-block;
       transform: skewX(-20deg);
       color: coral;
@@ -71,7 +66,8 @@
           deferred<br><code>&lt;script defer src="https://cdn.jsdelivr.net/gh/antonstihl/html-slides/script.js"&gt;&lt;/script&gt;</code>
         </li>
         <li class="f">(Optional) add an indicator element, <code>&lt;pre id="indicator"&gt;&lt;/pre&gt;</code></li>
-        <li class="f">Add class <code>f</code> (focusable) to make elements focusable. This will hide them initially, by default.</li>
+        <li class="f">Add class <code>f</code> (focusable) to make elements focusable. This will hide them initially, by
+          default.</li>
         <li class="f">Done! ✔️</li>
       </ol>
     </section>
@@ -83,9 +79,10 @@
       <ul class="f">
         <li>f</li>
         <li>p (perennial, used to escape f's default hiding)</li>
-        <li>current-section</li>
+        <li>section.current</li>
         <li>current-focus</li>
         <li>previous-focus</li>
+        <li>focus-trace</li>
       </ul>
     </section>
     <section>
