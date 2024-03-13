@@ -145,7 +145,7 @@ ol li {
   opacity: 0;
 }
 
-section:not(:has(.current-focus)) :first-child {
+section:not(:has(.current-focus)) * {
   color: var(--textColour);
 }
 
