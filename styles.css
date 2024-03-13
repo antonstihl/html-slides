@@ -32,13 +32,13 @@
   font-size: 32px;
   cursor: none;
   --bgColour: black;
-  --textColour: rgb(220, 220, 220);
+  --focusTextColour: rgb(220, 220, 220);
   --secondaryTextColour: rgb(122, 122, 122);
 }
 
 .light-mode {
   --bgColour: white;
-  --textColour: black;
+  --focusTextColour: black;
 }
 
 html,
@@ -145,15 +145,15 @@ ol li {
   opacity: 0;
 }
 
-section:not(:has(.current-focus)) * {
-  color: var(--textColour);
-}
-
 .previous-focus {
   opacity: 1;
 }
 
+section:not(:has(.current-focus)) * {
+  color: var(--focusTextColour);
+}
+
 .current-focus,
 .focus-sticky {
-  color: var(--textColour);
+  color: var(--focusTextColour);
 }
