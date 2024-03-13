@@ -7,21 +7,16 @@ if (indicatorPlaceholder) {
   console.log("No <pre> #indicator element in document.");
 }
 
-const leftArrow = document.querySelectorAll(".arrow-left");
-const rightArrow = document.querySelectorAll(".arrow-right");
-const downArrow = document.querySelectorAll(".arrow-down");
-const upArrow = document.querySelectorAll(".arrow-up");
-
 const initialSection = document.querySelector("div#html-slides > section");
-if (!initialSection) {
-  throw new Error(
+if (initialSection) {
+  initialSection.classList.add("current");
+} else {
+  console.error(
     document.querySelector("div#html-slides")
       ? "No sections in div#html-slides found."
       : "No div#html-slides in document."
   );
 }
-initialSection.classList.add("current");
-// initialSection.scrollIntoView("instant");
 
 addEventListener("click", () => {
   document.body.classList.toggle("laser-pointer");
@@ -59,18 +54,6 @@ addEventListener("keydown", (e) => {
   }
 });
 
-function currentSection() {
-  return document.querySelector("div#html-slides > .current");
-}
-
-function nextSection() {
-  return document.querySelector("div#html-slides > .current+section");
-}
-
-function previousSection() {
-  return document.querySelector("div#html-slides > section:has(+ .current)");
-}
-
 function goToNextSection() {
   const next = nextSection();
   if (!next) {
@@ -103,52 +86,49 @@ function focusNext() {
 function focusPrevious() {
   currentSection().scrollIntoView({ behavior: "instant" });
   const previousFocusable = getPreviousFocusable();
-  const focused = currentSection().querySelector(".current-focus");
-  revertFocus(focused);
-  clearCurrentFocus();
+  revertCurrentFocus();
   if (previousFocusable) {
     focus(previousFocusable);
   }
-}
-
-function getNextFocusable() {
-  const focusables = getFocusables();
-  const currentFocusableIndex = focusables.findIndex((e) =>
-    e.classList.contains("current-focus")
-  );
-  if (currentFocusableIndex === focusables.length - 1) {
-    return undefined;
-  } else {
-    return focusables[currentFocusableIndex + 1];
-  }
-}
-
-function getPreviousFocusable() {
-  const focusables = getFocusables();
-  const currentFocusableIndex = focusables.findIndex((e) =>
-    e.classList.contains("current-focus")
-  );
-  if (currentFocusableIndex === 0) {
-    return undefined;
-  } else {
-    return focusables[currentFocusableIndex - 1];
-  }
-}
-
-function getFocusables() {
-  return Array.from(currentSection().querySelectorAll(".f"));
 }
 
 function focus(e) {
   e?.classList.add("current-focus", "focus-trace");
 }
 
-function revertFocus(e) {
-  e?.classList.remove("current-focus", "focus-trace");
+function revertCurrentFocus(e) {
+  getCurrentFocus()?.classList.remove("current-focus", "focus-trace");
 }
 
 function clearCurrentFocus() {
-  currentSection()
-    .querySelectorAll(".current-focus")
-    .forEach((e) => e.classList.remove("current-focus"));
+  getCurrentFocus()?.classList.remove("current-focus");
+}
+
+function currentSection() {
+  return document.querySelector("div#html-slides > .current");
+}
+
+function nextSection() {
+  return document.querySelector("div#html-slides > .current+section");
+}
+
+function previousSection() {
+  return document.querySelector("div#html-slides > section:has(+ .current)");
+}
+
+function getCurrentFocus() {
+  return currentSection().querySelector(".current-focus");
+}
+
+function getNextFocusable() {
+  return currentSection().querySelector(".f:not(.focus-trace)");
+}
+
+function getPreviousFocusable() {
+  const previousFocusTrace = currentSection().querySelectorAll(
+    ".focus-trace:not(.current-focus)"
+  );
+  return previousFocusTrace.length === 0
+    ? undefined
+    : previousFocusTrace[previousFocusTrace.length - 1];
 }
