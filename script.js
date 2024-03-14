@@ -7,15 +7,11 @@ if (indicatorPlaceholder) {
   console.log("No <pre> #indicator element in document.");
 }
 
-const initialSection = document.querySelector("div#html-slides > section");
+const initialSection = document.querySelector("section");
 if (initialSection) {
   initialSection.classList.add("current");
 } else {
-  console.error(
-    document.querySelector("div#html-slides")
-      ? "No sections in div#html-slides found."
-      : "No div#html-slides in document."
-  );
+  console.error("No sections in found.");
 }
 
 addEventListener("click", () => {
@@ -105,15 +101,15 @@ function clearCurrentFocus() {
 }
 
 function currentSection() {
-  return document.querySelector("div#html-slides > .current");
+  return document.querySelector("section.current");
 }
 
 function nextSection() {
-  return document.querySelector("div#html-slides > .current+section");
+  return document.querySelector("section.current+section");
 }
 
 function previousSection() {
-  return document.querySelector("div#html-slides > section:has(+ .current)");
+  return document.querySelector("section:has(+ .current)");
 }
 
 function getCurrentFocus() {

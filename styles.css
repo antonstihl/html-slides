@@ -41,12 +41,14 @@
   --focusTextColour: black;
 }
 
-html,
-body {
-  overflow: scroll;
+html {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
 }
 
 body {
+  height: 100vh;
   background-color: var(--bgColour);
   color: var(--secondaryTextColour);
 
@@ -58,13 +60,6 @@ body {
 code {
   font-family: monospace;
   font-size: 0.8rem;
-}
-
-#html-slides {
-  height: 100vh;
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
 }
 
 section {
