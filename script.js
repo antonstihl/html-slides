@@ -1,12 +1,3 @@
-const indicatorPlaceholder = document.querySelector("pre#indicator");
-if (indicatorPlaceholder) {
-  const indicator = document.createElement("div");
-  indicator.classList.add("indicator-circle");
-  indicatorPlaceholder.replaceWith(indicator);
-} else {
-  console.log("No <pre> #indicator element in document.");
-}
-
 const initialSection = document.querySelector("section");
 if (initialSection) {
   initialSection.classList.add("current");

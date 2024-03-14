@@ -1,29 +1,6 @@
 @import url(reset-styles.css);
 
 /****************
-  Indicator
-****************/
-
-.indicator-circle {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  width: 10px;
-  aspect-ratio: 1;
-  border-radius: 100%;
-  border: 1px solid var(--secondaryTextColour);
-  background-color: var(--secondaryTextColour);
-}
-
-:has(section.current .f:not(.focus-trace)) .indicator-circle {
-  background-color: transparent;
-}
-
-:not(:has(section.current ~ section)) .indicator-circle {
-  border-radius: 1px;
-}
-
-/****************
   Basic
 ****************/
 
@@ -68,6 +45,7 @@ section {
   padding: 3rem 2rem;
   scroll-snap-align: start;
   overflow: scroll;
+  position: relative;
 }
 
 h1 {
@@ -125,6 +103,37 @@ ul li {
 
 ol li {
   list-style-type: decimal;
+}
+
+/****************
+  Indicator
+****************/
+
+section::after {
+  content: "";
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  width: 10px;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  border: 1px solid var(--secondaryTextColour);
+  background-color: var(--secondaryTextColour);
+  transition-property: transform;
+  transition-duration: 1s;
+}
+
+section:has(.f:not(.focus-trace))::after {
+  background-color: transparent;
+}
+
+section:not(:has(+ section))::after {
+  border-radius: 1px;
+}
+
+section:not(.current)::after {
+  transform: translateX(100px);
+  transition-duration: 2s;
 }
 
 /****************
