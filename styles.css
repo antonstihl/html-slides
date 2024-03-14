@@ -30,7 +30,7 @@ body {
   color: var(--secondaryTextColour);
 
   &.laser-pointer {
-    cursor: url(https://cdn.custom-cursor.com/db/pointer/32/Laser_Pointer.png), default;
+    cursor: url(https://cdn.custom-cursor.com/db/pointer/32/Laser_Pointer.png) 16 16, default;
   }
 }
 
