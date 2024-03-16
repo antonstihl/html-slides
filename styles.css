@@ -25,7 +25,6 @@ html {
 }
 
 body {
-  height: 100vh;
   scroll-snap-type: y mandatory;
   background-color: var(--bgColour);
   color: var(--secondaryTextColour);
