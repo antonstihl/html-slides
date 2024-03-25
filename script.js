@@ -108,7 +108,7 @@ function getCurrentFocus() {
 }
 
 function getNextFocusable() {
-  return currentSection().querySelector(".f:not(.focus-trace)");
+  return currentSection().querySelector("[hs-f]:not(.focus-trace)");
 }
 
 function getPreviousFocusable() {

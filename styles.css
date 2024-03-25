@@ -123,7 +123,7 @@ section::after {
   transition-duration: 1s;
 }
 
-section:has(.f:not(.focus-trace))::after {
+section:has([hs-f]:not(.focus-trace))::after {
   background-color: transparent;
 }
 
@@ -145,7 +145,7 @@ section:not(.current)::after {
   transition-duration: 500ms;
 }
 
-:where(.f:not(.p)) {
+:where([hs-f]:not(.p)) {
   opacity: 0;
 }
 

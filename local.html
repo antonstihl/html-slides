@@ -42,37 +42,39 @@
   </section>
   <section>
     <h2>A presentation library</h2>
-    <p class="f">HTML-slides provides simple tooling to render semantic HTML as a delightful visual aid for your
+    <p hs-f>HTML-slides provides simple tooling to render semantic HTML as a delightful visual aid for your
       presentation.
     </p>
-    <h3 class="f">Why?</h3>
-    <p class="f">If you <em>can</em> code a presentation, <em>why wouldn't you</em>?</p>
+    <h3 hs-f>Why?</h3>
+    <p hs-f>If you <em>can</em> code a presentation, <em>why wouldn't you</em>?</p>
   </section>
   <section>
     <h2>How to</h2>
     <ol>
-      <li class="f">Create an .html file with your semantic HTML content, divided into sections.</li>
-      <li class="f">Add the head style
+      <li hs-f>Create an .html file with your semantic HTML content, divided into sections.</li>
+      <li hs-f>Add the head style
         tag<br><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/antonstihl/html-slides/styles.css" /&gt;</code>
       </li>
-      <li class="f">Add the head script tag,
+      <li hs-f>Add the head script tag,
         deferred<br><code>&lt;script defer src="https://cdn.jsdelivr.net/gh/antonstihl/html-slides/script.js"&gt;&lt;/script&gt;</code>
       </li>
-      <li class="f">Add class <code>f</code> (focusable) to make elements focusable. This will hide them initially, by
+      <li hs-f>Add attribute <code>hs-f</code> (f for focusable) to make elements focusable. This will hide them
+        initially, by
         default.</li>
-      <li class="f">Done! ✔️</li>
+      <li hs-f>Done! ✔️</li>
     </ol>
   </section>
   <section>
     <h2>Bonus</h2>
-    <p class="f">Hook into the classes used by HTML-slides to <span class="f p sassy">style your elements</span> as
+    <p hs-f>Hook into the classes/attributes used by HTML-slides to <span class="f p sassy">style your elements</span>
+      as
       your
       presentation progresses.</p>
-    <ul class="f">
+    <ul hs-f>
       <li>
-        <code>.f</code>
+        <code>[hs-f]</code>
       </li>
-      <li><code>.p</code> (perennial, used to escape f's default hiding)</li>
+      <li><code>.p</code> (perennial, used to escape [hs-f]'s default hiding)</li>
       <li><code>section.current</code></li>
       <li><code>.current-focus</code></li>
       <li><code>.focus-trace</code></li>
@@ -80,15 +82,15 @@
   </section>
   <section>
     <h2>Philosophy</h2>
-    <p class="f">Some of the key characteristics of HTML-slides come from David JP Phillips TEDx talk, <a
+    <p hs-f>Some of the key characteristics of HTML-slides come from David JP Phillips TEDx talk, <a
         href="https://youtu.be/Iwpi1Lm6dFo?si=ZWBpE1KRV_Ys9pdU">How to avoid death by PowerPoint.</a></p>
     <ol>
       <ul>
-        <li class="f">One message per slide</li>
-        <li class="f">Use contrast and size to direct attention</li>
-        <li class="f">Don't write sentences</li>
-        <li class="f">Dark bakground</li>
-        <li class="f">Maximum of 6 items per slide</li>
+        <li hs-f>One message per slide</li>
+        <li hs-f>Use contrast and size to direct attention</li>
+        <li hs-f>Don't write sentences</li>
+        <li hs-f>Dark bakground</li>
+        <li hs-f>Maximum of 6 items per slide</li>
       </ul>
     </ol>
   </section>
