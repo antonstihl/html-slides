@@ -18,14 +18,7 @@
   --focusTextColour: black;
 }
 
-html {
-  overflow-y: scroll;
-  scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
-}
-
 body {
-  scroll-snap-type: y mandatory;
   background-color: var(--bgColour);
   color: var(--secondaryTextColour);
 
@@ -43,7 +36,6 @@ section {
   box-sizing: border-box;
   min-height: 100vh;
   padding: 3rem 2rem;
-  scroll-snap-align: start;
   overflow: scroll;
   position: relative;
 }
@@ -119,8 +111,6 @@ section::after {
   border-radius: 100%;
   border: 1px solid var(--secondaryTextColour);
   background-color: var(--secondaryTextColour);
-  transition-property: transform;
-  transition-duration: 1s;
 }
 
 section:has([hs-f]:not(.focus-trace))::after {
@@ -129,11 +119,6 @@ section:has([hs-f]:not(.focus-trace))::after {
 
 section:not(:has(+ section))::after {
   border-radius: 1px;
-}
-
-section:not(.current)::after {
-  transform: translateX(100px);
-  transition-duration: 2s;
 }
 
 /****************
@@ -145,6 +130,10 @@ section:not(.current)::after {
   transition-duration: 500ms;
 }
 
+section:not(.current) {
+  display: none;
+}
+
 :where([hs-f]:not(.p)) {
   opacity: 0;
 }
@@ -153,11 +142,11 @@ section:not(.current)::after {
   opacity: 1;
 }
 
-section:not(:has(.current-focus)) * {
+.current-focus,
+.focus-sticky {
   color: var(--focusTextColour);
 }
 
-.current-focus,
-.focus-sticky {
+section:not(:has(.current-focus)) * {
   color: var(--focusTextColour);
 }
