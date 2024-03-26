@@ -37,7 +37,8 @@ section {
   min-height: 100vh;
   padding: 3rem 2rem;
   overflow: scroll;
-  position: relative;
+  position: fixed;
+  inset: 0;
 }
 
 h1 {
@@ -131,7 +132,7 @@ section:not(:has(+ section))::after {
 }
 
 section:not(.current) {
-  display: none;
+  opacity: 0;
 }
 
 :where([hs-f]:not(.p)) {
