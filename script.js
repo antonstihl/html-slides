@@ -10,16 +10,16 @@ addEventListener("click", () => {
 });
 
 addEventListener("keydown", (e) => {
-  if (e.key === "ArrowDown") {
+  if (e.key === "ArrowDown" || e.key === "j") {
     e.preventDefault();
     goToNextSection();
-  } else if (e.key === "ArrowUp") {
+  } else if (e.key === "ArrowUp" || e.key === "k") {
     e.preventDefault();
     goToPreviousSection();
-  } else if (e.key === "ArrowRight") {
+  } else if (e.key === "ArrowRight" || e.key === "l") {
     e.preventDefault();
     focusNext();
-  } else if (e.key === "ArrowLeft") {
+  } else if (e.key === "ArrowLeft" || e.key === "j") {
     e.preventDefault();
     focusPrevious();
   } else if (e.key === "n") {
