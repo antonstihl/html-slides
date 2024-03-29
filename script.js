@@ -1,8 +1,27 @@
-const initialSection = document.querySelector("section");
-if (initialSection) {
-  initialSection.classList.add("current");
+if (!document.querySelector("section")) {
+  throw new Error("No sections found, but this is required for HTML-slides.");
 } else {
-  console.error("No sections in found.");
+  initializeSectionFromQuery() || initializeDefaultSection();
+}
+
+function initializeSectionFromQuery() {
+  const slideNumber = new URLSearchParams(window.location.search).get("s");
+  if (!slideNumber || slideNumber === "" || isNaN(slideNumber)) {
+    return false;
+  }
+  const queriedSection = document.querySelector(
+    `section:nth-of-type(${slideNumber})`
+  );
+  if (queriedSection) {
+    queriedSection.classList.add("current");
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function initializeDefaultSection() {
+  document.querySelector("section").classList.add("current");
 }
 
 addEventListener("click", () => {
@@ -37,7 +56,7 @@ addEventListener("keydown", (e) => {
       goToPreviousSection();
     }
   } else if (e.key === "r") {
-    currentSection().scrollIntoView();
+    getCurrentSection().scrollIntoView();
   }
 });
 
@@ -46,9 +65,10 @@ function goToNextSection() {
   if (!next) {
     return;
   }
-  currentSection().classList.remove("current");
+  getCurrentSection().classList.remove("current");
   next.scrollIntoView();
   next.classList.add("current");
+  refreshSlideQueryParam();
 }
 
 function goToPreviousSection() {
@@ -56,13 +76,29 @@ function goToPreviousSection() {
   if (!previous) {
     return;
   }
-  currentSection().classList.remove("current");
+  getCurrentSection().classList.remove("current");
   previous.scrollIntoView();
   previous.classList.add("current");
+  refreshSlideQueryParam();
+}
+
+function refreshSlideQueryParam() {
+  const currentSection = getCurrentSection();
+  const currentIndex =
+    Array.from(document.querySelectorAll("section")).findIndex(
+      (section) => section === currentSection
+    ) + 1;
+  const params = new URLSearchParams(window.location.search);
+  params.set("s", currentIndex);
+  window.history.replaceState(
+    {},
+    "",
+    decodeURIComponent(`${window.location.pathname}?${params}`)
+  );
 }
 
 function focusNext() {
-  currentSection().scrollIntoView({ behavior: "instant" });
+  getCurrentSection().scrollIntoView({ behavior: "instant" });
   const nextFocusable = getNextFocusable();
   if (nextFocusable) {
     clearCurrentFocus();
@@ -71,7 +107,7 @@ function focusNext() {
 }
 
 function focusPrevious() {
-  currentSection().scrollIntoView({ behavior: "instant" });
+  getCurrentSection().scrollIntoView({ behavior: "instant" });
   const previousFocusable = getPreviousFocusable();
   revertCurrentFocus();
   if (previousFocusable) {
@@ -91,7 +127,7 @@ function clearCurrentFocus() {
   getCurrentFocus()?.classList.remove("current-focus");
 }
 
-function currentSection() {
+function getCurrentSection() {
   return document.querySelector("section.current");
 }
 
@@ -104,15 +140,15 @@ function previousSection() {
 }
 
 function getCurrentFocus() {
-  return currentSection().querySelector(".current-focus");
+  return getCurrentSection().querySelector(".current-focus");
 }
 
 function getNextFocusable() {
-  return currentSection().querySelector("[hs-f]:not(.focus-trace)");
+  return getCurrentSection().querySelector("[hs-f]:not(.focus-trace)");
 }
 
 function getPreviousFocusable() {
-  const previousFocusTrace = currentSection().querySelectorAll(
+  const previousFocusTrace = getCurrentSection().querySelectorAll(
     ".focus-trace:not(.current-focus)"
   );
   return previousFocusTrace.length === 0
