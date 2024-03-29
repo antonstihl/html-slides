@@ -30,6 +30,12 @@ body {
 code {
   font-family: monospace;
   font-size: 0.8rem;
+  display: inline-block;
+  word-break: break-all;
+  background: var(--focusTextColour);
+  color: black;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 section {
