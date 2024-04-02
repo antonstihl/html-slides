@@ -1,5 +1,3 @@
-@import url(reset-styles.css);
-
 /****************
   Basic
 ****************/
@@ -11,16 +9,22 @@
   --bgColour: black;
   --focusTextColour: rgb(220, 220, 220);
   --secondaryTextColour: rgb(122, 122, 122);
-}
-
-.light-mode {
-  --bgColour: white;
-  --focusTextColour: black;
+  --linkColour: dodgerblue;
 }
 
 body {
   background-color: var(--bgColour);
   color: var(--secondaryTextColour);
+}
+
+section {
+  background-color: var(--bgColour);
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 3rem 2rem;
+  overflow: scroll;
+  position: fixed;
+  inset: 0;
 
   &.laser-pointer {
     cursor: url(https://cdn.custom-cursor.com/db/pointer/32/Laser_Pointer.png) 16 16, default;
@@ -32,19 +36,10 @@ code {
   font-size: 0.8rem;
   display: inline-block;
   word-break: break-all;
-  background: var(--focusTextColour);
+  background-color: var(--focusTextColour);
   color: black;
   border-radius: 5px;
   padding: 5px;
-}
-
-section {
-  box-sizing: border-box;
-  min-height: 100vh;
-  padding: 3rem 2rem;
-  overflow: scroll;
-  position: fixed;
-  inset: 0;
 }
 
 h1 {
@@ -60,7 +55,10 @@ h2 {
   font-weight: bold;
 }
 
-h3 {
+h3,
+h4,
+h5,
+h6 {
   font-size: 1.1rem;
   margin: 1em -1rem;
   font-style: italic;
@@ -70,35 +68,12 @@ p {
   margin: 1em 0;
 }
 
-em {
-  font-style: italic;
-}
-
 a {
   color: var(--secondaryTextColour);
 }
 
 .current-focus a {
-  color: rgb(0, 130, 209);
-}
-
-ul,
-ol {
-  margin-left: 1rem;
-  list-style-position: outside;
-
-  li {
-    margin: 0.5em 1em;
-    overflow-wrap: break-word;
-  }
-}
-
-ul li {
-  list-style-type: disc;
-}
-
-ol li {
-  list-style-type: decimal;
+  color: var(--linkColour);
 }
 
 /****************
@@ -129,17 +104,17 @@ section:not(:has(+ section))::after {
   Transitive
 ****************/
 
+section:not(.current) {
+  display: none;
+}
+
 section.current {
   animation: reveal 500ms ease-in-out 0ms 1 normal forwards;
 }
 
-section:not(.current) {
-  visibility: hidden;
-}
-
 @keyframes reveal {
   0% {
-    visibility: visible;
+    display: block;
     opacity: 0;
   }
 
