@@ -36,13 +36,13 @@ section {
 
 code {
   font-family: monospace;
-  font-size: 0.8rem;
+  font-size: 0.8em;
   display: inline-block;
   word-break: break-all;
   background-color: var(--textColor);
   color: black;
-  border-radius: 5px;
-  padding: 5px;
+  border-radius: 3px;
+  padding: 0.2em;
 }
 
 h1 {
