@@ -122,7 +122,7 @@ function focus(e) {
     return [];
   }
   getCurrentSection()
-    .querySelectorAll(`:is([hs-fa])${anchoredSelector}`)
+    .querySelectorAll(`:is([hs-fa]):is(${anchoredSelector})`)
     .forEach((groupElement) =>
       groupElement.classList.add("current-focus", "focus-trace")
     );
