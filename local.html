@@ -8,8 +8,7 @@
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📽️</text></svg>">
   <script defer src="script.js"></script>
-  <link rel="stylesheet" href="styles.css">
-  </link>
+  <link rel="stylesheet" href="styles.css" />
   <style>
     .sassy.focus-trace {
       transition: transform 1s;
@@ -52,19 +51,23 @@
   <section>
     <h2>How to</h2>
     <ol>
-      <li hs-f>Create an .html file with your HTML content, divided into one <code>&lt;section/&gt;</code> per "slide".</li>
-      <li hs-f=".floaties">Add the head style
+      <li hs-f>Create an .html file with your HTML content, divided into one <code>&lt;section/&gt;</code> per "slide".
+      </li>
+      <li hs-f>Add the head style
         tag<br><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/antonstihl/html-slides/styles.css" /&gt;</code>
       </li>
-      <li hs-fa class="floaties" style="float: right;">Floating anchored thing</li>
       <li hs-f>Add the head script tag,
         deferred<br><code>&lt;script defer src="https://cdn.jsdelivr.net/gh/antonstihl/html-slides/script.js"&gt;&lt;/script&gt;</code>
       </li>
-      <li hs-f>Add attribute <code>hs-f</code> (f for focusable) to make elements focusable. This will hide them
-        initially, by
-        default.</li>
+      <li hs-f=".floaties">Add attribute <code>hs-f</code> (f for focusable) to make elements focusable. This will hide
+        them initially, by default. Add a CSS selector as the <code>hs-f</code> value if you want to...</li>
       <li hs-f>Done! ✔️</li>
     </ol>
+    <div style="position: absolute; bottom: 0;">
+      <p hs-fa class="floaties" style="font-size: 10px;">... anchor other elements to its
+        focus. These anchored elements
+        also need the attribute <code>hs-fa</code> (focused anchored) to behave.</p>
+    </div>
   </section>
   <section>
     <h2>Bonus</h2>
