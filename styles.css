@@ -7,18 +7,21 @@
   font-size: 32px;
   cursor: none;
   --bgColour: black;
-  --focusTextColour: rgb(220, 220, 220);
-  --secondaryTextColour: rgb(122, 122, 122);
-  --linkColour: dodgerblue;
+  --primaryColor: rgb(220, 220, 220);
+  --secondaryColor: rgb(122, 122, 122);
+  --textColor: var(--secondaryColor);
 }
 
 body {
   background-color: var(--bgColour);
-  color: var(--secondaryTextColour);
 
   &.laser-pointer {
     cursor: url(laser_pointer.png) 16 16, default;
   }
+}
+
+* {
+  color: var(--textColor);
 }
 
 section {
@@ -36,7 +39,7 @@ code {
   font-size: 0.8rem;
   display: inline-block;
   word-break: break-all;
-  background-color: var(--focusTextColour);
+  background-color: var(--textColor);
   color: black;
   border-radius: 5px;
   padding: 5px;
@@ -66,14 +69,6 @@ p {
   margin: 1em 0;
 }
 
-a {
-  color: var(--secondaryTextColour);
-}
-
-.current-focus a {
-  color: var(--linkColour);
-}
-
 /****************
   Indicator
 ****************/
@@ -86,8 +81,8 @@ section::after {
   width: 10px;
   aspect-ratio: 1;
   border-radius: 100%;
-  border: 1px solid var(--secondaryTextColour);
-  background-color: var(--secondaryTextColour);
+  border: 1px solid var(--secondaryColor);
+  background-color: var(--secondaryColor);
 }
 
 section:has([hs-f]:not(.focus-trace))::after {
@@ -130,9 +125,9 @@ section.current {
 }
 
 .current-focus {
-  color: var(--focusTextColour);
+  --textColor: var(--primaryColor);
 }
 
 section:not(:has(.current-focus)) * {
-  color: var(--focusTextColour);
+  --textColor: var(--primaryColor);
 }
