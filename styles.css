@@ -129,8 +129,7 @@ section.current {
   opacity: 1;
 }
 
-.current-focus,
-.focus-sticky {
+.current-focus {
   color: var(--focusTextColour);
 }
 
