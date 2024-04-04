@@ -117,14 +117,27 @@ function focusPrevious() {
 
 function focus(e) {
   e?.classList.add("current-focus", "focus-trace");
+  const anchoredSelector = e.attributes["hs-f"].value;
+  if (!anchoredSelector) {
+    return [];
+  }
+  getCurrentSection()
+    .querySelectorAll(`[hs-fa]${anchoredSelector}`)
+    .forEach((groupElement) =>
+      groupElement.classList.add("current-focus", "focus-trace")
+    );
 }
 
 function revertCurrentFocus(e) {
-  getCurrentFocus()?.classList.remove("current-focus", "focus-trace");
+  getCurrentSection()
+    .querySelectorAll(".current-focus")
+    .forEach((el) => el.classList.remove("current-focus", "focus-trace"));
 }
 
 function clearCurrentFocus() {
-  getCurrentFocus()?.classList.remove("current-focus");
+  getCurrentSection()
+    .querySelectorAll(".current-focus")
+    .forEach((e) => e.classList.remove("current-focus"));
 }
 
 function getCurrentSection() {
@@ -149,7 +162,7 @@ function getNextFocusable() {
 
 function getPreviousFocusable() {
   const previousFocusTrace = getCurrentSection().querySelectorAll(
-    ".focus-trace:not(.current-focus)"
+    "[hs-f].focus-trace:not(.current-focus)"
   );
   return previousFocusTrace.length === 0
     ? undefined
