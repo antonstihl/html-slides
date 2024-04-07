@@ -7,7 +7,7 @@
   <title>Presentation</title>
   <link rel="icon"
     href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📽️</text></svg>">
-  <script defer src="https://cdn.jsdelivr.net/gh/antonstihl/html-slides/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/antonstihl/html-slides/script.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/antonstihl/html-slides/styles.css" />
   <style>
     .sassy.focus-trace {
@@ -53,20 +53,29 @@
     <ol>
       <li hs-f>Create an .html file with your HTML content, divided into one <code>&lt;section/&gt;</code> per "slide".
       </li>
-      <li hs-f>Add the head style
-        tag<br><code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/antonstihl/html-slides/styles.css" /&gt;</code>
+      <li hs-f>Add the head style tag <code
+          style="display: block;">&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/antonstihl/html-slides/styles.css" /&gt;</code>
       </li>
-      <li hs-f>Add the head script tag,
-        deferred<br><code>&lt;script defer src="https://cdn.jsdelivr.net/gh/antonstihl/html-slides/script.js"&gt;&lt;/script&gt;</code>
+      <li hs-f>Add the head script tag <code
+          style="display: block;">&lt;script src="https://cdn.jsdelivr.net/gh/antonstihl/html-slides/script.js"&gt;&lt;/script&gt;</code>
       </li>
-      <li hs-f=".floaties">Add attribute <code>hs-f</code> (f for focusable) to make elements focusable. This will hide
-        them initially, by default. Add a CSS selector as the <code>hs-f</code> value if you want to...</li>
+      <li hs-f>Add attribute <code>hs-f</code> (f for focusable) to make elements focusable. This will hide
+        them and reveal on focus.
+        <ul hs-f=".banana">
+          <li>Bonus: Add a CSS selector as the <code>hs-f</code> value if you want to...</li>
+</ul>
+      </li>
       <li hs-f>Done! ✔️</li>
     </ol>
-    <div style="position: absolute; bottom: 0;">
-      <p hs-fa class="floaties" style="font-size: 10px;">... anchor other elements to its
-        focus. These anchored elements
-        also need the attribute <code>hs-fa</code> (focused anchored) to behave.</p>
+    <div hs-fa class="banana" style="position: absolute; bottom: 0; font-size: 12px;">
+      <p>
+        ... make it an anchor that also focuses other elements. These anchored elements need to
+      </p>
+      <ul>
+        <li>have the attribute <code>hs-fa</code> ("focusable anchored")</li>
+        <li>match the CSS selector given in the anchor's <code>hs-f</code> value, e.g. by having a particular class.
+        </li>
+      </ul>
     </div>
   </section>
   <section>

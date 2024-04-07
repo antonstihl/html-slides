@@ -1,31 +1,12 @@
-if (!document.querySelector("section")) {
-  throw new Error("No sections found, but this is required for HTML-slides.");
-} else {
-  initializeSectionFromQuery() || initializeDefaultSection();
-}
-
-function initializeSectionFromQuery() {
-  const slideNumber = new URLSearchParams(window.location.search).get("s");
-  if (!slideNumber || slideNumber === "" || isNaN(slideNumber)) {
-    return false;
+addEventListener("DOMContentLoaded", () => {
+  try {
+    const slideNumber = new URLSearchParams(window.location.search).get("s");
+    document
+      .querySelector(`section:nth-of-type(${slideNumber})`)
+      .classList.add("current");
+  } catch {
+    document.querySelector("section").classList.add("current");
   }
-  const queriedSection = document.querySelector(
-    `section:nth-of-type(${slideNumber})`
-  );
-  if (queriedSection) {
-    queriedSection.classList.add("current");
-    return true;
-  } else {
-    return false;
-  }
-}
-
-function initializeDefaultSection() {
-  document.querySelector("section").classList.add("current");
-}
-
-addEventListener("click", () => {
-  document.body.classList.toggle("laser-pointer");
 });
 
 addEventListener("keydown", (e) => {
@@ -55,8 +36,8 @@ addEventListener("keydown", (e) => {
     } else {
       goToPreviousSection();
     }
-  } else if (e.key === "r") {
-    getCurrentSection().scrollIntoView();
+  } else if (e.key === "c") {
+    document.body.classList.toggle("laser-pointer");
   }
 });
 
@@ -141,7 +122,10 @@ function clearCurrentFocus() {
 }
 
 function getCurrentSection() {
-  return document.querySelector("section.current");
+  return (
+    document.querySelector("section.current") ||
+    document.querySelector("section")
+  );
 }
 
 function nextSection() {
