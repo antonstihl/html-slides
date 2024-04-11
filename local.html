@@ -10,6 +10,17 @@
   <script src="script.js"></script>
   <link rel="stylesheet" href="styles.css" />
   <style>
+    code {
+      font-family: monospace;
+      font-size: 0.8em;
+      display: inline-block;
+      word-break: break-all;
+      background-color: var(--textColor);
+      color: black;
+      border-radius: 3px;
+      padding: 0.2em;
+    }
+
     .sassy.focus-trace {
       transition: transform 1s;
       display: inline-block;
@@ -80,11 +91,9 @@
   </section>
   <section>
     <h2>Bonus</h2>
-    <p hs-f>Hook into the classes/attributes used by HTML-slides to <br><span hs-f class="p sassy">style your
-        elements</span>
-      as
-      your
-      presentation progresses.</p>
+    <p hs-f>Tap into the classes/attributes used by HTML-slides to <br><span hs-f class="p sassy">style your
+        elements</span> as your presentation progresses.</p>
+    <h3 hs-f>In your HTML</h3>
     <ul hs-f>
       <li>
         <code>[hs-f]</code>
@@ -93,6 +102,9 @@
         <code>[hs-fa]</code> (anchored focus, not focusable on its own)
       </li>
       <li><code>.p</code> (perennial, used to escape [hs-f]'s default hiding)</li>
+    </ul>
+    <h3 hs-f>In your CSS/JS</h3>
+    <ul hs-f>
       <li><code>section.current</code></li>
       <li><code>.current-focus</code></li>
       <li><code>.focus-trace</code></li>
