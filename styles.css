@@ -34,30 +34,6 @@ section {
   inset: 0;
 }
 
-h1 {
-  font-size: 1.5rem;
-  margin-top: 5rem;
-  margin-bottom: 0.5em;
-}
-
-h2 {
-  font-size: 1.2rem;
-  margin: 0.5em -1rem;
-}
-
-h3,
-h4,
-h5,
-h6 {
-  font-size: 1.1rem;
-  margin: 1em -1rem;
-  font-style: italic;
-}
-
-p {
-  margin: 1em 0;
-}
-
 /****************
   Indicator
 ****************/
@@ -65,8 +41,8 @@ p {
 section::after {
   content: "";
   position: absolute;
-  bottom: 1rem;
-  right: 1rem;
+  bottom: 30px;
+  right: 30px;
   width: 10px;
   aspect-ratio: 1;
   border-radius: 100%;
