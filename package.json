@@ -1,8 +1,14 @@
 {
-  "name": "html-slides",
+  "name": "hatepres",
   "version": "0.2.0",
   "description": "hypermedia as the engine of presentation",
   "main": "script.js",
+  "files": [
+    "README.md",
+    "script.js",
+    "styles.css",
+    "laser_pointer.png"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
