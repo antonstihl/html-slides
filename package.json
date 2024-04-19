@@ -1,0 +1,19 @@
+{
+  "name": "html-slides",
+  "version": "0.2.0",
+  "description": "hypermedia as the engine of presentation",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonstihl/html-slides.git"
+  },
+  "author": "Anton Stihl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antonstihl/html-slides/issues"
+  },
+  "homepage": "https://github.com/antonstihl/html-slides#readme"
+}
